@@ -1,0 +1,65 @@
+:root {
+  --bg-color: #050505;
+  --text-primary: #F3F4F6;
+  --text-secondary: #9CA3AF;
+  --accent-color: #8B5CF6; /* Violet */
+  --accent-glow: rgba(139, 92, 246, 0.4);
+  --card-bg: rgba(255, 255, 255, 0.03);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --glass-bg: rgba(5, 5, 5, 0.6);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--card-border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+/* Layout & Utility Classes */
+.glass-nav {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--card-border);
+}
+
+.section-padding {
+  padding: 100px 5%;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding: 150px 10%;
+  }
+}
+
+/* Glowing text effect for accents */
+.text-glow {
+  text-shadow: 0 0 20px var(--accent-glow);
+}
