@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Navbar from './components/Navbar'; function App() {
+import Navbar from './components/Navbar';
+
+function App() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
 
@@ -29,7 +31,6 @@ import Navbar from './components/Navbar'; function App() {
             className="text-7xl sm:text-8xl md:text-[12rem] lg:text-[15rem] font-azeret font-black tracking-tighter text-white leading-none mb-6 cursor-default"
             onMouseEnter={() => setIsHovering(true)}
             onMouseLeave={() => setIsHovering(false)}
-            onMouseMove={handleMouseMove}
           >
             PULIP KIM
           </h1>
