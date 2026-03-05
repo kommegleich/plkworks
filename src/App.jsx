@@ -292,8 +292,6 @@ function App() {
                   alt="pulip kim"
                   className="w-full h-full object-cover scale-[1.02] border-none outline-none"
                 />
-                <div className="absolute inset-0 bg-black/40 mix-blend-multiply"></div>
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/80"></div>
               </div>
 
               <div className="absolute inset-0 p-8 md:p-10 lg:p-12 flex flex-col z-10 transition-transform duration-300 ease-out group-hover:-translate-y-2">
@@ -344,8 +342,6 @@ function App() {
                   alt="flow"
                   className="w-full h-full object-cover scale-[1.02] border-none outline-none"
                 />
-                <div className="absolute inset-0 bg-black/40 mix-blend-multiply"></div>
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/80"></div>
               </div>
 
               <div className="absolute inset-0 p-8 md:p-10 lg:p-12 flex flex-col z-10 transition-transform duration-300 ease-out group-hover:-translate-y-2">
@@ -395,8 +391,6 @@ function App() {
                   alt="context"
                   className="w-full h-full object-cover scale-[1.02] border-none outline-none"
                 />
-                <div className="absolute inset-0 bg-black/40 mix-blend-multiply"></div>
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/80"></div>
               </div>
 
               <div className="absolute inset-0 p-8 md:p-10 lg:p-12 flex flex-col z-10 transition-transform duration-300 ease-out group-hover:-translate-y-2">
