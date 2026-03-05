@@ -274,7 +274,7 @@ function App() {
       <section id="approach" className="w-full bg-[#121212] pt-32 pb-48 text-white relative">
         <div className="w-full px-4 md:px-8 mb-24 flex flex-col items-center">
           <div className="mb-12">
-            <span className="text-[30px] uppercase tracking-[0.2em] font-bold text-gray-400 border-[3px] border-gray-700 px-10 py-5 rounded-[4rem] backdrop-blur-sm">ABOUT</span>
+            <span className="text-[30px] font-bold text-gray-400 border border-gray-700 px-10 py-5 rounded-[4rem] backdrop-blur-sm tracking-[-0.05em]">About</span>
           </div>
           <h2 className="text-8xl md:text-[10rem] lg:text-[14rem] font-black tracking-tighter leading-tight px-2 hover:text-gray-300 transition-colors text-center uppercase">
             MY APPROACH.
@@ -307,7 +307,7 @@ function App() {
                 {/* Middle: Title */}
                 <div className="flex-1 flex items-center">
                   <h3 className="text-[4rem] md:text-[5rem] lg:text-[6rem] font-extralight tracking-tighter text-[#121212] group-hover:text-white transition-all duration-500 leading-none" style={{ fontWeight: 200 }}>
-                    Intuition
+                    intuition
                   </h3>
                 </div>
 
@@ -344,7 +344,7 @@ function App() {
                 {/* Middle: Title */}
                 <div className="flex-1 flex items-center">
                   <h3 className="text-[4rem] md:text-[5rem] lg:text-[6rem] font-extralight tracking-tighter text-white group-hover:text-white transition-all duration-500 leading-none" style={{ fontWeight: 200 }}>
-                    Flow
+                    flow
                   </h3>
                 </div>
 
@@ -381,7 +381,7 @@ function App() {
                 {/* Middle: Title */}
                 <div className="flex-1 flex items-center">
                   <h3 className="text-[4rem] md:text-[5rem] lg:text-[6rem] font-extralight tracking-tighter text-white group-hover:text-white transition-all duration-500 leading-none" style={{ fontWeight: 200 }}>
-                    Context
+                    context
                   </h3>
                 </div>
 
