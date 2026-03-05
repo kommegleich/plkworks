@@ -29,7 +29,7 @@ const Navbar = () => {
         }`}
     >
       <div className="grid grid-cols-2 md:grid-cols-3 items-center max-w-7xl mx-auto px-6">
-        <a href="#" className={`justify-self-start text-3xl md:text-5xl font-azeret font-black tracking-tighter transition-colors duration-300 ${scrolled ? 'text-black' : 'text-[#121212]'}`}>
+        <a href="#" className={`justify-self-start text-3xl md:text-5xl font-helvetica font-black tracking-tighter transition-colors duration-300 ${scrolled ? 'text-black' : 'text-[#121212]'}`}>
           PL<span className="text-gray-400">K</span>
         </a>
 
