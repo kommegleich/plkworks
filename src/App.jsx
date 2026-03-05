@@ -307,7 +307,7 @@ function App() {
                 <div className="flex-1 flex items-center relative">
                   {/* Default State */}
                   <div className="absolute inset-0 flex items-center opacity-100 group-hover:opacity-0 transition-opacity duration-300">
-                    <h3 className="text-[2.5rem] md:text-[3.5rem] lg:text-[4rem] font-extralight tracking-tighter text-[#121212] uppercase leading-none" style={{ fontWeight: 200 }}>
+                    <h3 className="text-[2.5rem] md:text-[3.5rem] lg:text-[4rem] font-black tracking-tighter text-[#121212] uppercase leading-none" style={{ fontWeight: 900 }}>
                       INTUITION
                     </h3>
                   </div>
@@ -318,8 +318,8 @@ function App() {
                   {/* Default State */}
                   <div className="absolute inset-0 opacity-100 group-hover:opacity-0 transition-opacity duration-300 flex flex-col justify-end pb-2">
                     <div className="flex flex-col gap-1 w-full">
-                      <span className="text-2xl md:text-3xl text-gray-500 font-normal tracking-tight">직관</span>
-                      <p className="text-2xl md:text-3xl text-gray-400 font-normal break-keep leading-snug">
+                      <span className="text-2xl md:text-3xl text-[#121212] font-normal tracking-tighter">직관</span>
+                      <p className="text-2xl md:text-3xl text-[#121212] font-normal tracking-tighter break-keep leading-snug">
                         첫 진입부터 다음 행동이 보이는 구조
                       </p>
                     </div>
@@ -361,7 +361,7 @@ function App() {
                 <div className="flex-1 flex items-center relative">
                   {/* Default State */}
                   <div className="absolute inset-0 flex items-center opacity-100 group-hover:opacity-0 transition-opacity duration-300">
-                    <h3 className="text-[2.5rem] md:text-[3.5rem] lg:text-[4rem] font-extralight tracking-tighter text-white uppercase leading-none" style={{ fontWeight: 200 }}>
+                    <h3 className="text-[2.5rem] md:text-[3.5rem] lg:text-[4rem] font-black tracking-tighter text-white uppercase leading-none" style={{ fontWeight: 900 }}>
                       FLOW
                     </h3>
                   </div>
@@ -372,8 +372,8 @@ function App() {
                   {/* Default State */}
                   <div className="absolute inset-0 opacity-100 group-hover:opacity-0 transition-opacity duration-300 flex flex-col justify-end pb-2">
                     <div className="flex flex-col gap-1 w-full">
-                      <span className="text-2xl md:text-3xl text-white/90 font-normal tracking-tight">흐름</span>
-                      <p className="text-2xl md:text-3xl text-white/70 font-normal break-keep leading-snug">
+                      <span className="text-2xl md:text-3xl text-white font-normal tracking-tighter">흐름</span>
+                      <p className="text-2xl md:text-3xl text-white font-normal tracking-tighter break-keep leading-snug">
                         사용자의 목적과 제품의 구조가 일치하는 지점
                       </p>
                     </div>
@@ -414,7 +414,7 @@ function App() {
                 <div className="flex-1 flex items-center relative">
                   {/* Default State */}
                   <div className="absolute inset-0 flex items-center opacity-100 group-hover:opacity-0 transition-opacity duration-300">
-                    <h3 className="text-[2.5rem] md:text-[3.5rem] lg:text-[4rem] font-extralight tracking-tighter text-white uppercase leading-none" style={{ fontWeight: 200 }}>
+                    <h3 className="text-[2.5rem] md:text-[3.5rem] lg:text-[4rem] font-black tracking-tighter text-white uppercase leading-none" style={{ fontWeight: 900 }}>
                       CONTEXT
                     </h3>
                   </div>
@@ -425,8 +425,8 @@ function App() {
                   {/* Default State */}
                   <div className="absolute inset-0 opacity-100 group-hover:opacity-0 transition-opacity duration-300 flex flex-col justify-end pb-2">
                     <div className="flex flex-col gap-1 w-full">
-                      <span className="text-2xl md:text-3xl text-white/90 font-normal tracking-tight">맥락</span>
-                      <p className="text-2xl md:text-3xl text-gray-400 font-normal break-keep leading-snug">
+                      <span className="text-2xl md:text-3xl text-white font-normal tracking-tighter">맥락</span>
+                      <p className="text-2xl md:text-3xl text-white font-normal tracking-tighter break-keep leading-snug">
                         화면이 아닌 제품 전체의 구조를 먼저 읽는 것
                       </p>
                     </div>
