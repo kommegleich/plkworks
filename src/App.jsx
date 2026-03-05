@@ -76,7 +76,7 @@ import Navbar from './components/Navbar'; function App() {
             <div className="group cursor-pointer flex flex-col gap-6 pt-12">
               <div className="w-full aspect-[21/9] rounded-2xl overflow-hidden flex items-end justify-end relative bg-gray-200">
                 <img
-                  src="/project1.png"
+                  src={`${import.meta.env.BASE_URL}project1_v3.png`}
                   alt="골프장 통합 ERP시스템"
                   className="w-11/12 md:w-4/5 h-auto object-cover object-right-bottom transform transition-transform duration-700 group-hover:scale-105 origin-bottom-right"
                 />
