@@ -317,9 +317,12 @@ function App() {
                 <div className="flex-none relative h-32 md:h-40">
                   {/* Default State */}
                   <div className="absolute inset-0 opacity-100 group-hover:opacity-0 transition-opacity duration-300 flex flex-col justify-end pb-2">
-                    <p className="text-xl md:text-2xl text-gray-500 font-medium break-keep leading-snug w-full">
-                      직관 : 첫 진입부터 다음 행동이 보이는 구조
-                    </p>
+                    <div className="flex flex-col gap-1 w-full">
+                      <span className="text-2xl md:text-3xl text-gray-500 font-bold tracking-tight">직관</span>
+                      <p className="text-lg md:text-xl text-gray-400 font-medium break-keep leading-snug">
+                        첫 진입부터 다음 행동이 보이는 구조
+                      </p>
+                    </div>
                   </div>
                   {/* Hover State */}
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-75 flex flex-col justify-end pb-2">
@@ -368,9 +371,12 @@ function App() {
                 <div className="flex-none relative h-32 md:h-40">
                   {/* Default State */}
                   <div className="absolute inset-0 opacity-100 group-hover:opacity-0 transition-opacity duration-300 flex flex-col justify-end pb-2">
-                    <p className="text-xl md:text-2xl text-white/70 font-medium break-keep leading-snug w-full">
-                      흐름 : 사용자의 목적과 제품의 구조가 일치하는 지점
-                    </p>
+                    <div className="flex flex-col gap-1 w-full">
+                      <span className="text-2xl md:text-3xl text-white/90 font-bold tracking-tight">흐름</span>
+                      <p className="text-lg md:text-xl text-white/70 font-medium break-keep leading-snug">
+                        사용자의 목적과 제품의 구조가 일치하는 지점
+                      </p>
+                    </div>
                   </div>
                   {/* Hover State */}
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-75 flex flex-col justify-end pb-2">
@@ -418,9 +424,12 @@ function App() {
                 <div className="flex-none relative h-32 md:h-40">
                   {/* Default State */}
                   <div className="absolute inset-0 opacity-100 group-hover:opacity-0 transition-opacity duration-300 flex flex-col justify-end pb-2">
-                    <p className="text-xl md:text-2xl text-gray-400 font-medium break-keep leading-snug w-full">
-                      맥락 : 화면이 아닌 제품 전체의 구조를 먼저 읽는 것
-                    </p>
+                    <div className="flex flex-col gap-1 w-full">
+                      <span className="text-2xl md:text-3xl text-white/90 font-bold tracking-tight">맥락</span>
+                      <p className="text-lg md:text-xl text-gray-400 font-medium break-keep leading-snug">
+                        화면이 아닌 제품 전체의 구조를 먼저 읽는 것
+                      </p>
+                    </div>
                   </div>
                   {/* Hover State */}
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-75 flex flex-col justify-end gap-2 pb-2">
