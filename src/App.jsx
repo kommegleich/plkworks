@@ -17,51 +17,31 @@ import Navbar from './components/Navbar'; function App() {
   }, []);
 
   return (
-    <div className="relative w-full bg-white font-['Pretendard'] selection:bg-black selection:text-white">
+    <div className="relative w-full bg-black font-['Pretendard'] selection:bg-white selection:text-black">
       <Navbar />
 
-      {/* Hero Section (Light) */}
-      <section className="relative w-full h-screen bg-white flex flex-col items-center justify-center overflow-hidden">
-        {/* Main Interaction Area */}
-        <div
-          className="relative z-10 flex flex-col items-center py-8 px-4"
-          onMouseEnter={() => setIsHovering(true)}
-          onMouseLeave={() => setIsHovering(false)}
-        >
-          {/* Centered Text */}
-          <motion.div
-            className="text-8xl md:text-[10rem] lg:text-[14rem] font-['Montserrat'] font-black tracking-tight cursor-default text-[#121212] mb-8 leading-none"
-            initial={{ opacity: 0, y: 15 }}
-            animate={{
-              opacity: 1,
-              y: 0,
-              scale: isHovering ? 1.05 : 1
-            }}
-            transition={{
-              opacity: { duration: 0.8, ease: "easeOut" },
-              y: { duration: 0.8, ease: "easeOut" },
-              scale: { duration: 0.4, ease: "easeOut" }
-            }}
-          >
-            PLK
-          </motion.div>
+      {/* Hero Section (Dark Posterco Layout) */}
+      <section className="relative w-full h-screen bg-black flex flex-col items-center justify-center overflow-hidden">
+        {/* Main Content Area */}
+        <div className="z-10 flex flex-col items-center justify-center text-center px-4 w-full h-full">
 
-          {/* Subtitle */}
+          <h1
+            className="text-7xl sm:text-8xl md:text-[12rem] lg:text-[15rem] font-azeret font-black tracking-tighter text-white leading-none mb-6 cursor-default"
+            onMouseEnter={() => setIsHovering(true)}
+            onMouseLeave={() => setIsHovering(false)}
+            onMouseMove={handleMouseMove}
+          >
+            PULIP KIM
+          </h1>
+
           <motion.div
-            className="text-gray-600 text-sm md:text-base font-normal text-center leading-relaxed max-w-2xl"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{
-              opacity: isHovering ? 1 : 0,
-              y: isHovering ? 0 : 10
-            }}
-            transition={{
-              duration: 0.8,
-              delay: isHovering ? 0.2 : 0,
-              ease: "easeOut"
-            }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-white text-base md:text-xl lg:text-2xl font-azeret font-black tracking-wide max-w-4xl opacity-80"
           >
             <p>기획, 설계, 마케팅, 운영까지 전체 흐름을 이해하고 움직이는 UX UI 디자이너입니다.</p>
-            <p>사용자 경험은 물론, 기획부터 운영까지의 흐름을 이해하며, <span className="font-extrabold">제품의 <span className="text-[#121212]">맥락</span></span>을 중심에 두고 설계합니다.</p>
+            <p className="mt-2 text-gray-400">사용자 경험은 물론, 기획부터 운영까지의 흐름을 이해하며, <span className="text-white">제품의 맥락</span>을 중심에 두고 설계합니다.</p>
           </motion.div>
         </div>
       </section>
