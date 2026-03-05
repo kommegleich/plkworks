@@ -68,21 +68,16 @@ import Navbar from './components/Navbar'; function App() {
 
 
       {/* Projects Section (Posterco Style) */}
-      <section id="projects" className="w-full bg-[#121212] pt-32 pb-0 text-white">
+      <section id="projects" className="w-full bg-black pt-32 pb-32 text-white">
         <div className="w-full px-4 md:px-8 mb-12">
           <h2 className="text-4xl md:text-6xl lg:text-8xl font-azeret font-black tracking-tighter px-2 hover:text-gray-300 transition-colors">PROJECTS.</h2>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 w-full gap-0">
+        <div className="grid grid-cols-1 md:grid-cols-2 w-full gap-4 md:gap-8 px-4 md:px-8">
 
           {/* Project 1 */}
-          <a href="#" className="group block cursor-pointer relative overflow-hidden bg-[#222]">
+          <a href="#" className="group block cursor-pointer relative overflow-hidden rounded-[2.5rem] bg-[#121212]">
             <div className="w-full aspect-[4/3] relative">
-              <img
-                src={`${import.meta.env.BASE_URL}project1_v3.png`}
-                alt="골프장 통합 ERP시스템"
-                className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none"></div>
               <div className="absolute bottom-0 left-0 p-8 md:p-12 translate-y-8 opacity-0 transition-all duration-500 ease-out group-hover:translate-y-0 group-hover:opacity-100 z-10 w-full">
                 <h3 className="text-3xl md:text-5xl font-black font-azeret tracking-tighter mb-3 uppercase text-white drop-shadow-md">UX Research & Design</h3>
                 <p className="text-gray-300 font-medium tracking-wide text-lg md:text-xl md:whitespace-nowrap overflow-hidden text-ellipsis drop-shadow-sm">골프장 통합 ERP시스템</p>
@@ -91,10 +86,9 @@ import Navbar from './components/Navbar'; function App() {
           </a>
 
           {/* Project 2 */}
-          <a href="#" className="group block cursor-pointer relative overflow-hidden bg-[#222]">
+          <a href="#" className="group block cursor-pointer relative overflow-hidden rounded-[2.5rem] bg-[#121212]">
             <div className="w-full aspect-[4/3] relative">
-              <span className="text-gray-500 font-medium absolute inset-0 flex items-center justify-center transform transition-transform duration-700 group-hover:scale-105">Image Placeholder 2</span>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none"></div>
               <div className="absolute bottom-0 left-0 p-8 md:p-12 translate-y-8 opacity-0 transition-all duration-500 ease-out group-hover:translate-y-0 group-hover:opacity-100 z-10 w-full">
                 <h3 className="text-3xl md:text-5xl font-black font-azeret tracking-tighter mb-3 uppercase text-white drop-shadow-md">App Design</h3>
                 <p className="text-gray-300 font-medium tracking-wide text-lg md:text-xl md:whitespace-nowrap overflow-hidden text-ellipsis drop-shadow-sm">E-COMMERCE APP UX IMPROVEMENT</p>
@@ -103,10 +97,9 @@ import Navbar from './components/Navbar'; function App() {
           </a>
 
           {/* Project 3 */}
-          <a href="#" className="group block cursor-pointer relative overflow-hidden bg-[#222]">
+          <a href="#" className="group block cursor-pointer relative overflow-hidden rounded-[2.5rem] bg-[#121212]">
             <div className="w-full aspect-[4/3] relative">
-              <span className="text-gray-500 font-medium absolute inset-0 flex items-center justify-center transform transition-transform duration-700 group-hover:scale-105">Image Placeholder 3</span>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none"></div>
               <div className="absolute bottom-0 left-0 p-8 md:p-12 translate-y-8 opacity-0 transition-all duration-500 ease-out group-hover:translate-y-0 group-hover:opacity-100 z-10 w-full">
                 <h3 className="text-3xl md:text-5xl font-black font-azeret tracking-tighter mb-3 uppercase text-white drop-shadow-md">Design System</h3>
                 <p className="text-gray-300 font-medium tracking-wide text-lg md:text-xl md:whitespace-nowrap overflow-hidden text-ellipsis drop-shadow-sm">B2B SAAS DASHBOARD PATTERN</p>
@@ -115,14 +108,9 @@ import Navbar from './components/Navbar'; function App() {
           </a>
 
           {/* Project 4 */}
-          <a href="#" className="group block cursor-pointer relative overflow-hidden bg-[#222]">
+          <a href="#" className="group block cursor-pointer relative overflow-hidden rounded-[2.5rem] bg-[#121212]">
             <div className="w-full aspect-[4/3] relative">
-              <img
-                src={`${import.meta.env.BASE_URL}project1_v3.png`}
-                alt="골프장 통합 ERP시스템"
-                className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none"></div>
               <div className="absolute bottom-0 left-0 p-8 md:p-12 translate-y-8 opacity-0 transition-all duration-500 ease-out group-hover:translate-y-0 group-hover:opacity-100 z-10 w-full">
                 <h3 className="text-3xl md:text-5xl font-black font-azeret tracking-tighter mb-3 uppercase text-white drop-shadow-md">UX Research & Design</h3>
                 <p className="text-gray-300 font-medium tracking-wide text-lg md:text-xl md:whitespace-nowrap overflow-hidden text-ellipsis drop-shadow-sm">골프장 통합 ERP시스템</p>
@@ -131,10 +119,9 @@ import Navbar from './components/Navbar'; function App() {
           </a>
 
           {/* Project 5 */}
-          <a href="#" className="group block cursor-pointer relative overflow-hidden bg-[#222]">
+          <a href="#" className="group block cursor-pointer relative overflow-hidden rounded-[2.5rem] bg-[#121212]">
             <div className="w-full aspect-[4/3] relative">
-              <span className="text-gray-500 font-medium absolute inset-0 flex items-center justify-center transform transition-transform duration-700 group-hover:scale-105">Image Placeholder 5</span>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none"></div>
               <div className="absolute bottom-0 left-0 p-8 md:p-12 translate-y-8 opacity-0 transition-all duration-500 ease-out group-hover:translate-y-0 group-hover:opacity-100 z-10 w-full">
                 <h3 className="text-3xl md:text-5xl font-black font-azeret tracking-tighter mb-3 uppercase text-white drop-shadow-md">App Design</h3>
                 <p className="text-gray-300 font-medium tracking-wide text-lg md:text-xl md:whitespace-nowrap overflow-hidden text-ellipsis drop-shadow-sm">E-COMMERCE APP UX IMPROVEMENT</p>
@@ -143,10 +130,9 @@ import Navbar from './components/Navbar'; function App() {
           </a>
 
           {/* Project 6 */}
-          <a href="#" className="group block cursor-pointer relative overflow-hidden bg-[#222]">
+          <a href="#" className="group block cursor-pointer relative overflow-hidden rounded-[2.5rem] bg-[#121212]">
             <div className="w-full aspect-[4/3] relative">
-              <span className="text-gray-500 font-medium absolute inset-0 flex items-center justify-center transform transition-transform duration-700 group-hover:scale-105">Image Placeholder 6</span>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none"></div>
               <div className="absolute bottom-0 left-0 p-8 md:p-12 translate-y-8 opacity-0 transition-all duration-500 ease-out group-hover:translate-y-0 group-hover:opacity-100 z-10 w-full">
                 <h3 className="text-3xl md:text-5xl font-black font-azeret tracking-tighter mb-3 uppercase text-white drop-shadow-md">Design System</h3>
                 <p className="text-gray-300 font-medium tracking-wide text-lg md:text-xl md:whitespace-nowrap overflow-hidden text-ellipsis drop-shadow-sm">B2B SAAS DASHBOARD PATTERN</p>
