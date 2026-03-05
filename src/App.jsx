@@ -284,7 +284,7 @@ function App() {
         <div className="w-full max-w-[1800px] mx-auto px-4 md:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 transform scale-90 md:scale-[0.8] origin-center">
             {/* Card 1 */}
-            <div className="group relative w-full aspect-[3/5] bg-[#ffffff] rounded-[2.5rem] overflow-hidden cursor-pointer hover:scale-[1.08] transition-transform duration-300 ease-out shadow-2xl">
+            <div className="group relative w-full aspect-[3.5/5] bg-[#ffffff] rounded-[2.5rem] overflow-hidden cursor-pointer hover:scale-[1.08] transition-transform duration-300 ease-out shadow-2xl">
               {/* Hover Image */}
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out z-0">
                 <img
@@ -336,7 +336,7 @@ function App() {
             </div>
 
             {/* Card 2 */}
-            <div className="group relative w-full aspect-[3/5] bg-[#d9331d] rounded-[2.5rem] overflow-hidden cursor-pointer hover:scale-[1.08] transition-transform duration-300 ease-out shadow-2xl">
+            <div className="group relative w-full aspect-[3.5/5] bg-[#d9331d] rounded-[2.5rem] overflow-hidden cursor-pointer hover:scale-[1.08] transition-transform duration-300 ease-out shadow-2xl">
               {/* Hover Image */}
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out z-0">
                 <img
@@ -363,17 +363,31 @@ function App() {
                   </h3>
                 </div>
 
-                {/* Bottom: Description */}
-                <div className="flex-none h-32 md:h-40">
-                  <p className="text-lg md:text-xl text-white/70 group-hover:text-white transition-colors duration-300 font-medium break-keep leading-snug w-[95%]">
-                    사용자의 목적과 제품의 구조가 일치하는 지점
-                  </p>
+                {/* Bottom: Description Area (Crossfade logic) */}
+                <div className="flex-none relative h-32 md:h-40">
+                  {/* Default State */}
+                  <div className="absolute inset-0 opacity-100 group-hover:opacity-0 transition-opacity duration-300">
+                    <p className="text-lg md:text-xl text-white/70 font-medium break-keep leading-snug w-[95%]">
+                      사용자의 목적과 제품의 구조가 일치하는 지점
+                    </p>
+                  </div>
+                  {/* Hover State */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-75 flex flex-col justify-end pb-2">
+                    <a href="#projects" className="flex items-center gap-2 group/link cursor-pointer w-fit">
+                      <h3 className="text-[2.5rem] md:text-[3.5rem] lg:text-[4rem] font-normal tracking-tighter text-white uppercase leading-none">
+                        MORE WORKS
+                      </h3>
+                      <svg className="w-8 h-8 md:w-10 md:h-10 text-white transform group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform duration-300" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                      </svg>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
 
             {/* Card 3 */}
-            <div className="group relative w-full aspect-[3/5] bg-[#1b1b1b] rounded-[2.5rem] overflow-hidden cursor-pointer hover:scale-[1.08] transition-transform duration-300 ease-out shadow-2xl">
+            <div className="group relative w-full aspect-[3.5/5] bg-[#1b1b1b] rounded-[2.5rem] overflow-hidden cursor-pointer hover:scale-[1.08] transition-transform duration-300 ease-out shadow-2xl">
               {/* Hover Image */}
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out z-0">
                 <img
@@ -412,12 +426,20 @@ function App() {
                     </p>
                   </div>
                   {/* Hover State */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-75 flex flex-col justify-end pb-2">
-                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 group/link cursor-pointer w-fit">
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-75 flex flex-col justify-end gap-2 pb-2">
+                    <a href="mailto:arbeiterinpilita@gmail.com" className="flex items-center gap-2 group/link cursor-pointer w-fit">
+                      <h3 className="text-[2.5rem] md:text-[3.5rem] lg:text-[4rem] font-normal tracking-tighter text-white uppercase leading-none">
+                        CONTACT
+                      </h3>
+                      <svg className="w-8 h-8 md:w-10 md:h-10 text-white transform group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform duration-300" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                      </svg>
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 group/link2 cursor-pointer w-fit">
                       <h3 className="text-[2.5rem] md:text-[3.5rem] lg:text-[4rem] font-normal tracking-tighter text-white uppercase leading-none">
                         LINKEDIN
                       </h3>
-                      <svg className="w-8 h-8 md:w-10 md:h-10 text-white transform group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform duration-300" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <svg className="w-8 h-8 md:w-10 md:h-10 text-white transform group-hover/link2:translate-x-1 group-hover/link2:-translate-y-1 transition-transform duration-300" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
                       </svg>
                     </a>
