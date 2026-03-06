@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import ScrollToTop from './components/ScrollToTop';
 import Home from './pages/Home';
-import Project01 from './pages/Project01';
-import Project02 from './pages/Project02';
-import Project03 from './pages/Project03';
-import Project04 from './pages/Project04';
-import Project05 from './pages/Project05';
-import Project06 from './pages/Project06';
+
+// Lazy load project pages to reduce initial bundle size
+const Project01 = React.lazy(() => import('./pages/Project01'));
+const Project02 = React.lazy(() => import('./pages/Project02'));
+const Project03 = React.lazy(() => import('./pages/Project03'));
+const Project04 = React.lazy(() => import('./pages/Project04'));
+const Project05 = React.lazy(() => import('./pages/Project05'));
+const Project06 = React.lazy(() => import('./pages/Project06'));
 
 function App() {
   return (
@@ -16,15 +18,17 @@ function App() {
       <ScrollToTop />
       <div className="relative w-full bg-white selection:bg-black selection:text-white">
         <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/project/1" element={<Project01 />} />
-          <Route path="/project/2" element={<Project02 />} />
-          <Route path="/project/3" element={<Project03 />} />
-          <Route path="/project/4" element={<Project04 />} />
-          <Route path="/project/5" element={<Project05 />} />
-          <Route path="/project/6" element={<Project06 />} />
-        </Routes>
+        <Suspense fallback={<div className="w-full h-screen bg-[#F4F4F2] flex items-center justify-center text-gray-400 font-bold tracking-widest text-sm">LOADING...</div>}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/project/1" element={<Project01 />} />
+            <Route path="/project/2" element={<Project02 />} />
+            <Route path="/project/3" element={<Project03 />} />
+            <Route path="/project/4" element={<Project04 />} />
+            <Route path="/project/5" element={<Project05 />} />
+            <Route path="/project/6" element={<Project06 />} />
+          </Routes>
+        </Suspense>
       </div>
     </Router>
   );
