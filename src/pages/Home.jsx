@@ -5,6 +5,28 @@ import { ArrowRight } from 'lucide-react';
 function Home() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [activeApproachCard, setActiveApproachCard] = useState(-1);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize(); // Initial check
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    let interval;
+    if (isMobile) {
+      setActiveApproachCard(0);
+      interval = setInterval(() => {
+        setActiveApproachCard((prev) => (prev + 1) % 3);
+      }, 3000); // 3 seconds per card
+    } else {
+      setActiveApproachCard(-1);
+    }
+    return () => clearInterval(interval);
+  }, [isMobile]);
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -61,8 +83,8 @@ function Home() {
             className="text-gray-600 text-base md:text-lg font-normal text-center leading-relaxed max-w-2xl mt-12"
             initial={{ opacity: 0, y: 15 }}
             animate={{
-              opacity: isHovering ? 1 : 0,
-              y: isHovering ? 0 : 15
+              opacity: isHovering || isMobile ? 1 : 0,
+              y: isHovering || isMobile ? 0 : 15
             }}
             transition={{
               duration: 0.8,
@@ -220,7 +242,7 @@ function Home() {
                     <path d="M0 47.5C0 42.25 4.25 38 9.5 38H19V47.5C19 52.75 14.75 57 9.5 57C4.25 57 0 52.75 0 47.5Z" fill="#0AC170" />
                   </svg>
                 </div>
-                <div className="flex flex-col overflow-hidden h-[4rem] md:h-[5.5rem] xl:h-[5rem] min-w-[160px]">
+                <div className="flex flex-col overflow-hidden h-[5rem] md:h-[5.5rem] xl:h-[5.5rem] min-w-[160px]">
                   <h3 className="text-4xl md:text-5xl font-black tracking-tight leading-none mb-1 md:mb-2">Figma</h3>
                   <div className="flex justify-center xl:justify-start w-full">
                     <RollingSkills skills={["UI Design", "Prototyping", "Design System", "Collaboration"]} color="text-gray-400" />
@@ -240,7 +262,7 @@ function Home() {
                     <path d="M14.653 3H21v17.402l-6.347-17.402zm-5.306 0H3v17.402L9.347 3zM12 10.367l4.184 10.035h-3.265l-1.429-3.714H8.714L7.286 20.402H4L12 10.367z" />
                   </svg>
                 </div>
-                <div className="flex flex-col overflow-hidden h-[4rem] md:h-[5.5rem] xl:h-[5rem] min-w-[160px]">
+                <div className="flex flex-col overflow-hidden h-[5rem] md:h-[5.5rem] xl:h-[5.5rem] min-w-[160px]">
                   <h3 className="text-4xl md:text-5xl font-black tracking-tight leading-none mb-1 md:mb-2">Adobe</h3>
                   <div className="flex justify-center xl:justify-start w-full">
                     <RollingSkills skills={["Photoshop", "Illustrator", "After Effects", "Premiere Pro"]} color="text-gray-400" />
@@ -265,7 +287,7 @@ function Home() {
                     </svg>
                   </div>
                 </div>
-                <div className="flex flex-col overflow-hidden h-[4rem] md:h-[5.5rem] xl:h-[5rem] min-w-[160px]">
+                <div className="flex flex-col overflow-hidden h-[5rem] md:h-[5.5rem] xl:h-[5.5rem] min-w-[160px]">
                   <h3 className="text-4xl md:text-5xl font-black tracking-tight leading-none mb-1 md:mb-2">Dev</h3>
                   <div className="flex justify-center xl:justify-start w-full">
                     <RollingSkills skills={["HTML5", "CSS3 / Tailwind", "React.js", "JavaScript"]} color="text-gray-400" />
@@ -291,9 +313,9 @@ function Home() {
         <div className="w-full max-w-[1800px] mx-auto px-4 md:px-8">
           <div className="grid grid-cols-1 xl:grid-cols-3 gap-12 xl:gap-16 transform scale-95 md:scale-90 xl:scale-[0.8] origin-center max-w-lg md:max-w-2xl xl:max-w-none mx-auto">
             {/* Card 1 */}
-            <div className="group relative w-full aspect-[3.5/5] bg-[#ffffff] rounded-[2.5rem] overflow-hidden cursor-pointer hover:scale-[1.15] hover:z-50 transition-transform duration-300 ease-out shadow-2xl">
+            <div className={`group ${isMobile && activeApproachCard === 0 ? 'mobile-active' : ''} relative w-full aspect-[3.5/5] bg-[#ffffff] rounded-[2.5rem] overflow-hidden cursor-pointer md:hover:scale-[1.15] md:hover:z-50 transition-transform duration-300 ease-out shadow-2xl`}>
               {/* Hover Image */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out z-0">
+              <div className="absolute inset-0 opacity-0 md:group-hover:opacity-100 group-[.mobile-active]:opacity-100 transition-all duration-300 ease-in-out z-0">
                 <img
                   src={`${import.meta.env.BASE_URL}assets/profile.jpg`}
                   alt="pulip kim"
@@ -302,9 +324,9 @@ function Home() {
                 <div className="absolute inset-0 bg-black/20"></div>
               </div>
 
-              <div className="absolute inset-0 p-8 md:p-10 lg:p-12 flex flex-col z-10 transition-transform duration-300 ease-out group-hover:-translate-y-2">
+              <div className="absolute inset-0 p-8 md:p-10 lg:p-12 flex flex-col z-10 transition-transform duration-300 ease-out md:group-hover:-translate-y-2 group-[.mobile-active]:-translate-y-2">
                 <div className="flex-none">
-                  <span className="text-2xl md:text-3xl lg:text-4xl font-light tracking-tight text-[#121212] group-hover:text-white transition-colors duration-300">
+                  <span className="text-2xl md:text-3xl lg:text-4xl font-light tracking-tight text-[#121212] md:group-hover:text-white group-[.mobile-active]:text-white transition-colors duration-300">
                     (01)
                   </span>
                 </div>
@@ -312,7 +334,7 @@ function Home() {
                 {/* Middle: Title Area (Crossfade logic) */}
                 <div className="flex-1 flex items-center relative">
                   {/* Default State */}
-                  <div className="absolute inset-0 flex items-center opacity-100 group-hover:opacity-0 transition-opacity duration-300">
+                  <div className="absolute inset-0 flex items-center opacity-100 md:group-hover:opacity-0 group-[.mobile-active]:opacity-0 transition-opacity duration-300">
                     <h3 className="text-[clamp(2.5rem,6vw,4rem)] font-black tracking-tighter text-[#121212] uppercase leading-none" style={{ fontWeight: 900 }}>
                       INTUITION
                     </h3>
@@ -322,7 +344,7 @@ function Home() {
                 {/* Bottom: Description Area (Crossfade logic) */}
                 <div className="flex-none relative h-32 md:h-40">
                   {/* Default State */}
-                  <div className="absolute inset-0 opacity-100 group-hover:opacity-0 transition-opacity duration-300 flex flex-col justify-end pb-2">
+                  <div className="absolute inset-0 opacity-100 md:group-hover:opacity-0 group-[.mobile-active]:opacity-0 transition-opacity duration-300 flex flex-col justify-end pb-2">
                     <div className="flex flex-col gap-1 w-full">
                       <span className="text-xl md:text-2xl lg:text-3xl text-[#121212] font-normal tracking-tighter">직관</span>
                       <p className="text-xl md:text-2xl lg:text-3xl text-[#121212] font-normal tracking-tighter break-keep leading-snug">
@@ -331,7 +353,7 @@ function Home() {
                     </div>
                   </div>
                   {/* Hover State */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-75 flex flex-col justify-end pb-2">
+                  <div className="absolute inset-0 opacity-0 md:group-hover:opacity-100 group-[.mobile-active]:opacity-100 transition-opacity duration-300 delay-75 flex flex-col justify-end pb-2">
                     <h3 className="text-[clamp(2rem,6vw,4rem)] font-normal tracking-tighter text-white uppercase leading-none mb-2">
                       PULIP KIM
                     </h3>
@@ -344,9 +366,9 @@ function Home() {
             </div>
 
             {/* Card 2 */}
-            <div className="group relative w-full aspect-[3.5/5] bg-[#d9331d] rounded-[2.5rem] overflow-hidden cursor-pointer hover:scale-[1.15] hover:z-50 transition-transform duration-300 ease-out shadow-2xl">
+            <div className={`group ${isMobile && activeApproachCard === 1 ? 'mobile-active' : ''} relative w-full aspect-[3.5/5] bg-[#d9331d] rounded-[2.5rem] overflow-hidden cursor-pointer md:hover:scale-[1.15] md:hover:z-50 transition-transform duration-300 ease-out shadow-2xl`}>
               {/* Hover Image */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out z-0">
+              <div className="absolute inset-0 opacity-0 md:group-hover:opacity-100 group-[.mobile-active]:opacity-100 transition-all duration-300 ease-in-out z-0">
                 <img
                   src={`${import.meta.env.BASE_URL}assets/card2_hover_new.jpg`}
                   alt="flow"
@@ -355,9 +377,9 @@ function Home() {
                 <div className="absolute inset-0 bg-black/20"></div>
               </div>
 
-              <div className="absolute inset-0 p-8 md:p-10 lg:p-12 flex flex-col z-10 transition-transform duration-300 ease-out group-hover:-translate-y-2">
+              <div className="absolute inset-0 p-8 md:p-10 lg:p-12 flex flex-col z-10 transition-transform duration-300 ease-out md:group-hover:-translate-y-2 group-[.mobile-active]:-translate-y-2">
                 <div className="flex-none">
-                  <span className="text-2xl md:text-3xl lg:text-4xl font-light tracking-tight text-white/90 group-hover:text-white transition-colors duration-300">
+                  <span className="text-2xl md:text-3xl lg:text-4xl font-light tracking-tight text-white/90 md:group-hover:text-white group-[.mobile-active]:text-white transition-colors duration-300">
                     (02)
                   </span>
                 </div>
@@ -365,7 +387,7 @@ function Home() {
                 {/* Middle: Title Area (Crossfade logic) */}
                 <div className="flex-1 flex items-center relative">
                   {/* Default State */}
-                  <div className="absolute inset-0 flex items-center opacity-100 group-hover:opacity-0 transition-opacity duration-300">
+                  <div className="absolute inset-0 flex items-center opacity-100 md:group-hover:opacity-0 group-[.mobile-active]:opacity-0 transition-opacity duration-300">
                     <h3 className="text-[clamp(2.5rem,6vw,4rem)] font-black tracking-tighter text-white uppercase leading-none" style={{ fontWeight: 900 }}>
                       FLOW
                     </h3>
@@ -375,7 +397,7 @@ function Home() {
                 {/* Bottom: Description Area (Crossfade logic) */}
                 <div className="flex-none relative h-32 md:h-40">
                   {/* Default State */}
-                  <div className="absolute inset-0 opacity-100 group-hover:opacity-0 transition-opacity duration-300 flex flex-col justify-end pb-2">
+                  <div className="absolute inset-0 opacity-100 md:group-hover:opacity-0 group-[.mobile-active]:opacity-0 transition-opacity duration-300 flex flex-col justify-end pb-2">
                     <div className="flex flex-col gap-1 w-full">
                       <span className="text-xl md:text-2xl lg:text-3xl text-white font-normal tracking-tighter">흐름</span>
                       <p className="text-xl md:text-2xl lg:text-3xl text-white font-normal tracking-tighter break-keep leading-snug">
@@ -384,7 +406,7 @@ function Home() {
                     </div>
                   </div>
                   {/* Hover State */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-75 flex flex-col justify-end pb-2">
+                  <div className="absolute inset-0 opacity-0 md:group-hover:opacity-100 group-[.mobile-active]:opacity-100 transition-opacity duration-300 delay-75 flex flex-col justify-end pb-2">
                     <a href="#projects" className="flex items-center gap-2 group/link cursor-pointer w-fit">
                       <h3 className="text-[clamp(2rem,6vw,4rem)] font-normal tracking-tighter text-white uppercase leading-none group-hover/link:underline underline-offset-[8px] decoration-4">
                         MORE WORKS
@@ -396,9 +418,9 @@ function Home() {
             </div>
 
             {/* Card 3 */}
-            <div className="group relative w-full aspect-[3.5/5] bg-[#1b1b1b] rounded-[2.5rem] overflow-hidden cursor-pointer hover:scale-[1.15] hover:z-50 transition-transform duration-300 ease-out shadow-2xl">
+            <div className={`group ${isMobile && activeApproachCard === 2 ? 'mobile-active' : ''} relative w-full aspect-[3.5/5] bg-[#1b1b1b] rounded-[2.5rem] overflow-hidden cursor-pointer md:hover:scale-[1.15] md:hover:z-50 transition-transform duration-300 ease-out shadow-2xl`}>
               {/* Hover Image */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out z-0">
+              <div className="absolute inset-0 opacity-0 md:group-hover:opacity-100 group-[.mobile-active]:opacity-100 transition-all duration-300 ease-in-out z-0">
                 <img
                   src={`${import.meta.env.BASE_URL}assets/card3_hover_new.jpg`}
                   alt="context"
@@ -407,9 +429,9 @@ function Home() {
                 <div className="absolute inset-0 bg-black/20"></div>
               </div>
 
-              <div className="absolute inset-0 p-8 md:p-10 lg:p-12 flex flex-col z-10 transition-transform duration-300 ease-out group-hover:-translate-y-2">
+              <div className="absolute inset-0 p-8 md:p-10 lg:p-12 flex flex-col z-10 transition-transform duration-300 ease-out md:group-hover:-translate-y-2 group-[.mobile-active]:-translate-y-2">
                 <div className="flex-none">
-                  <span className="text-2xl md:text-3xl lg:text-4xl font-light tracking-tight text-white/80 group-hover:text-white transition-colors duration-300">
+                  <span className="text-2xl md:text-3xl lg:text-4xl font-light tracking-tight text-white/80 md:group-hover:text-white group-[.mobile-active]:text-white transition-colors duration-300">
                     (03)
                   </span>
                 </div>
@@ -417,7 +439,7 @@ function Home() {
                 {/* Middle: Title Area (Crossfade logic) */}
                 <div className="flex-1 flex items-center relative">
                   {/* Default State */}
-                  <div className="absolute inset-0 flex items-center opacity-100 group-hover:opacity-0 transition-opacity duration-300">
+                  <div className="absolute inset-0 flex items-center opacity-100 md:group-hover:opacity-0 group-[.mobile-active]:opacity-0 transition-opacity duration-300">
                     <h3 className="text-[clamp(2.5rem,6vw,4rem)] font-black tracking-tighter text-white uppercase leading-none" style={{ fontWeight: 900 }}>
                       CONTEXT
                     </h3>
@@ -427,7 +449,7 @@ function Home() {
                 {/* Bottom: Description Area (Crossfade logic) */}
                 <div className="flex-none relative h-32 md:h-40">
                   {/* Default State */}
-                  <div className="absolute inset-0 opacity-100 group-hover:opacity-0 transition-opacity duration-300 flex flex-col justify-end pb-2">
+                  <div className="absolute inset-0 opacity-100 md:group-hover:opacity-0 group-[.mobile-active]:opacity-0 transition-opacity duration-300 flex flex-col justify-end pb-2">
                     <div className="flex flex-col gap-1 w-full">
                       <span className="text-xl md:text-2xl lg:text-3xl text-white font-normal tracking-tighter">맥락</span>
                       <p className="text-xl md:text-2xl lg:text-3xl text-white font-normal tracking-tighter break-keep leading-snug">
@@ -436,7 +458,7 @@ function Home() {
                     </div>
                   </div>
                   {/* Hover State */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-75 flex flex-col justify-end gap-2 pb-2">
+                  <div className="absolute inset-0 opacity-0 md:group-hover:opacity-100 group-[.mobile-active]:opacity-100 transition-opacity duration-300 delay-75 flex flex-col justify-end gap-2 pb-2">
                     <a href="mailto:arbeiterinpilita@gmail.com" className="flex items-center gap-2 group/link cursor-pointer w-fit">
                       <h3 className="text-[clamp(2rem,6vw,4rem)] font-normal tracking-tighter text-white uppercase leading-none group-hover/link:underline underline-offset-[8px] decoration-4">
                         GET IN TOUCH
