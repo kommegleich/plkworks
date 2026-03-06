@@ -17,12 +17,12 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className="fixed top-6 left-0 right-0 z-50 flex justify-center pointer-events-none px-4 md:px-8">
+    <div className={`fixed top-6 left-0 right-0 z-[100] flex justify-center pointer-events-none px-4 md:px-8 ${isProjectPage ? 'mix-blend-difference text-white' : ''}`}>
       {isProjectPage ? (
         <div className="pointer-events-auto w-full max-w-[1800px] flex justify-start">
           <Link
             to="/"
-            className="flex items-center gap-3 px-6 py-6 bg-transparent text-white text-3xl md:text-5xl font-[600] rounded-full hover:opacity-70 transition-opacity"
+            className="group flex items-center gap-4 px-3 py-4 bg-transparent text-white text-3xl md:text-5xl font-[600] rounded-full"
             style={{ fontFamily: 'Inter, sans-serif' }}
           >
             <svg
@@ -34,12 +34,17 @@ const Navbar = () => {
               strokeWidth="2.5"
               strokeLinecap="square"
               strokeLinejoin="miter"
-              className="mt-1"
+              className="mt-1 transition-transform duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-x-2"
             >
-              <line x1="19" y1="12" x2="5" y2="12"></line>
-              <polyline points="12 19 5 12 12 5"></polyline>
+              <path d="M10 5 L3 12 L10 19 M3 12 L21 12" />
             </svg>
-            prev
+
+            <div className="relative overflow-hidden h-[1.1em] flex flex-col justify-start">
+              <div className="flex flex-col transition-transform duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] transform group-hover:-translate-y-[50%]">
+                <span className="block h-[1.1em] leading-[1.1em] uppercase tracking-tight">BACK</span>
+                <span className="block h-[1.1em] leading-[1.1em] uppercase tracking-tight">BACK</span>
+              </div>
+            </div>
           </Link>
         </div>
       ) : (
