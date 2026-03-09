@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
 // 1. Main Wrapper
@@ -234,7 +234,7 @@ export function ProjectFullMediaWithTitle({ chip, title, subtitle, src, images, 
         if (!images || images.length === 0) return;
         const interval = setInterval(() => {
             setCurrentIndex((prev) => (prev + 1) % images.length);
-        }, 3000);
+        }, 1600); // 1.6s interval matches a 0.8s display and 0.8s transition
         return () => clearInterval(interval);
     }, [images]);
 
@@ -261,20 +261,23 @@ export function ProjectFullMediaWithTitle({ chip, title, subtitle, src, images, 
                 </div>
             </div>
 
-            {/* Media Container with Parallax Window */}
-            <div ref={ref} className="w-full overflow-hidden relative flex justify-center h-[60vh] md:h-[80vh] md:mt-8">
+            {/* Media Container without Parallax Window */}
+            <div ref={ref} className="w-full relative flex justify-center h-[60vh] md:h-[80vh] md:mt-8">
                 {images && images.length > 0 ? (
-                    <motion.div style={{ y }} className="w-full relative origin-top max-w-[1200px] flex justify-center">
-                        {images.map((img, idx) => (
-                            <img
-                                key={idx}
-                                src={img}
-                                alt={`Sequence ${idx}`}
-                                className={`w-[95%] md:w-[80%] max-w-[1200px] h-auto object-contain origin-top mx-auto transition-opacity duration-1000 ease-in-out ${idx === 0 ? 'relative' : 'absolute top-0 left-1/2 -translate-x-1/2'
-                                    } ${idx === currentIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+                    <div className="w-full relative max-w-[1200px] flex justify-center items-center h-full">
+                        <AnimatePresence mode="popLayout">
+                            <motion.img
+                                key={currentIndex}
+                                src={images[currentIndex]}
+                                alt={`Sequence ${currentIndex}`}
+                                initial={{ opacity: 0, y: 50 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -50 }}
+                                transition={{ duration: 0.8, ease: "easeInOut" }}
+                                className="w-[95%] md:w-[80%] max-w-[1200px] h-auto object-contain absolute mx-auto"
                             />
-                        ))}
-                    </motion.div>
+                        </AnimatePresence>
+                    </div>
                 ) : isVideo ? (
                     <video src={src} autoPlay loop muted playsInline className="w-full h-full object-cover" />
                 ) : (
