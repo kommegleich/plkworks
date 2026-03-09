@@ -160,7 +160,7 @@ export function ProjectTreeChart({ chip, title, rootNode, branches }) {
             {/* Header: Chip and Title */}
             <div className="w-full max-w-[1400px] mb-16 flex flex-col gap-4 items-center md:items-start select-none">
                 {chip && (
-                    <div className="px-5 py-1.5 border border-[#3E4C69] text-[#6B89AC] text-[11px] md:text-sm font-bold rounded-full uppercase tracking-widest bg-transparent">
+                    <div className="px-5 py-1.5 border border-white text-[#111622] text-[11px] md:text-sm font-bold uppercase tracking-widest bg-white">
                         {chip}
                     </div>
                 )}
