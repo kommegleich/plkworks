@@ -252,7 +252,7 @@ export function ProjectFullMediaWithTitle({ chip, title, subtitle, src, isVideo 
             </div>
 
             {/* Media Container with Parallax Window */}
-            <div ref={ref} className="w-full max-w-[1400px] mx-auto overflow-hidden relative flex justify-center bg-[#F4F5F7] h-[60vh] md:h-[80vh] rounded-[24px] md:rounded-[32px] md:mt-8 shadow-inner border border-black/5">
+            <div ref={ref} className="w-full max-w-[1400px] mx-auto overflow-hidden relative flex justify-center h-[60vh] md:h-[80vh] md:mt-8">
                 {isVideo ? (
                     <video src={src} autoPlay loop muted playsInline className="w-full h-full object-cover" />
                 ) : (
@@ -260,7 +260,7 @@ export function ProjectFullMediaWithTitle({ chip, title, subtitle, src, isVideo 
                         style={{ y }}
                         src={src}
                         alt="Section Media"
-                        className="w-[95%] md:w-[85%] max-w-[1200px] h-auto object-contain shadow-2xl rounded-[16px] origin-top"
+                        className="w-[95%] md:w-[85%] max-w-[1200px] h-auto object-contain origin-top"
                     />
                 )}
             </div>
