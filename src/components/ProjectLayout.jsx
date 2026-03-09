@@ -172,7 +172,7 @@ export function ProjectTreeChart({ chip, title, subtitle, rootNode, branches }) 
                     </h2>
                 )}
                 {subtitle && (
-                    <p className="text-base md:text-lg text-[#9A9BA5] font-normal md:font-medium leading-[1.6] max-w-3xl text-center md:text-left mt-2">
+                    <p className="text-[15px] md:text-base text-[#9A9BA5] font-normal leading-[1.7] max-w-3xl text-center md:text-left mt-4 opacity-90">
                         {subtitle}
                     </p>
                 )}
@@ -257,7 +257,7 @@ export function ProjectFullMediaWithTitle({ chip, title, subtitle, src, images, 
                     </h2>
                 )}
                 {subtitle && (
-                    <p className="text-base md:text-lg text-gray-500 font-normal md:font-medium leading-[1.6] max-w-3xl">
+                    <p className="text-[15px] md:text-base text-[#9A9BA5] font-normal leading-[1.7] max-w-3xl opacity-90">
                         {subtitle}
                     </p>
                 )}
@@ -297,7 +297,7 @@ export function ProjectFullMediaWithTitle({ chip, title, subtitle, src, images, 
     return (
         <section className={`w-full py-24 md:py-32 flex flex-col items-center overflow-hidden ${bgColor}`}>
             {layout === 'split' ? (
-                <div className="w-full max-w-[1600px] px-4 md:px-8 lg:px-16 flex flex-col md:grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+                <div className="w-full max-w-[1800px] px-4 md:px-8 lg:px-16 flex flex-col md:grid md:grid-cols-2 gap-12 md:gap-16 items-center">
                     {renderHeader()}
                     {renderMedia()}
                 </div>
