@@ -243,7 +243,7 @@ export function ProjectFullMediaWithTitle({ chip, title, subtitle, src, images, 
             {/* Header: Chip, Title, Subtitle */}
             <div className="w-full max-w-[1400px] px-4 md:px-8 lg:px-16 mb-12 flex flex-col gap-6 items-center md:items-start text-center md:text-left select-none">
                 {chip && (
-                    <div className="px-4 py-1.5 bg-[#11101C] text-white text-[13px] md:text-sm font-medium rounded-[4px]">
+                    <div className="px-5 py-1.5 border border-[#111622] text-white text-[11px] md:text-sm font-bold uppercase tracking-widest bg-[#111622] rounded-none">
                         {chip}
                     </div>
                 )}
@@ -254,7 +254,7 @@ export function ProjectFullMediaWithTitle({ chip, title, subtitle, src, images, 
                         </h2>
                     )}
                     {subtitle && (
-                        <p className="text-lg md:text-xl text-gray-500 font-medium leading-[1.6] max-w-3xl">
+                        <p className="text-base md:text-lg text-gray-500 font-normal md:font-medium leading-[1.6] max-w-3xl">
                             {subtitle}
                         </p>
                     )}
