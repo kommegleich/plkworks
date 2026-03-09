@@ -4,6 +4,7 @@ import { ProjectLayout, ProjectHeroExact, ProjectGrid, ProjectSplit, ProjectFull
 import imgM01 from '../images/project1-m01.webp';
 import imgM02 from '../images/project1-m02.webp';
 import imgSystem01 from '../images/project-system-01.png';
+import imgSystem02 from '../images/project-system-02.png';
 
 function Project01() {
     return (
@@ -75,7 +76,7 @@ function Project01() {
                 chip="System"
                 title="통합 디자인 시스템"
                 subtitle="기존 프론트 업무의 불편함을 개선한 통합 시스템을 만나보세요."
-                src={imgSystem01}
+                src={imgSystem02}
                 bgColor="bg-gray-50"
             />
 
