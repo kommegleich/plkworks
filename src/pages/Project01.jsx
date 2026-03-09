@@ -3,9 +3,19 @@ import { ProjectLayout, ProjectHeroExact, ProjectGrid, ProjectSplit, ProjectFull
 
 import imgM01 from '../images/project1-m01.webp';
 import imgM02 from '../images/project1-m02.webp';
-import imgSystem01 from '../images/project-system-01.png';
-import imgSystem02 from '../images/project-system-02.png';
-import imgSystem03 from '../images/project-system-03.png';
+import sys01 from '../images/project1_system01.png';
+import sys02 from '../images/project1_system02.png';
+import sys03 from '../images/project1_system03.png';
+import sys04 from '../images/project1_system04.png';
+import sys05 from '../images/project1_system05.png';
+import sys06 from '../images/project1_system06.png';
+import sys07 from '../images/project1_system07.png';
+import sys08 from '../images/project1_system08.png';
+import sys09 from '../images/project1_system09.png';
+import sys10 from '../images/project1_system010.png';
+import sys11 from '../images/project1_system011.png';
+
+const systemImages = [sys01, sys02, sys03, sys04, sys05, sys06, sys07, sys08, sys09, sys10, sys11];
 
 function Project01() {
     return (
@@ -77,7 +87,7 @@ function Project01() {
                 chip="System"
                 title="통합 디자인 시스템"
                 subtitle="기존 프론트 업무의 불편함을 개선한 통합 시스템을 만나보세요."
-                src={imgSystem03}
+                images={systemImages}
                 bgColor="bg-gray-50"
             />
 

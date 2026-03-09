@@ -219,7 +219,7 @@ export function ProjectTreeChart({ chip, title, rootNode, branches }) {
 }
 
 // 9. Full Media with Title & Chip
-export function ProjectFullMediaWithTitle({ chip, title, subtitle, src, isVideo = false, bgColor = "bg-white" }) {
+export function ProjectFullMediaWithTitle({ chip, title, subtitle, src, images, isVideo = false, bgColor = "bg-white" }) {
     const ref = useRef(null);
     const { scrollYProgress } = useScroll({
         target: ref,
@@ -227,6 +227,16 @@ export function ProjectFullMediaWithTitle({ chip, title, subtitle, src, isVideo 
     });
     // 스크롤 시 위(-33%)에서 아래(10%)로 이동하는 패럴랙스 (위에서 3분의 1 배치 후 내려감)
     const y = useTransform(scrollYProgress, [0, 1], ["-33%", "10%"]);
+
+    const [currentIndex, setCurrentIndex] = React.useState(0);
+
+    React.useEffect(() => {
+        if (!images || images.length === 0) return;
+        const interval = setInterval(() => {
+            setCurrentIndex((prev) => (prev + 1) % images.length);
+        }, 3000);
+        return () => clearInterval(interval);
+    }, [images]);
 
     return (
         <section className={`w-full py-24 md:py-32 flex flex-col items-center overflow-hidden ${bgColor}`}>
@@ -253,7 +263,19 @@ export function ProjectFullMediaWithTitle({ chip, title, subtitle, src, isVideo 
 
             {/* Media Container with Parallax Window */}
             <div ref={ref} className="w-full overflow-hidden relative flex justify-center h-[60vh] md:h-[80vh] md:mt-8">
-                {isVideo ? (
+                {images && images.length > 0 ? (
+                    <motion.div style={{ y }} className="w-full relative origin-top max-w-[1200px] flex justify-center">
+                        {images.map((img, idx) => (
+                            <img
+                                key={idx}
+                                src={img}
+                                alt={`Sequence ${idx}`}
+                                className={`w-[95%] md:w-[80%] max-w-[1200px] h-auto object-contain origin-top mx-auto transition-opacity duration-1000 ease-in-out ${idx === 0 ? 'relative' : 'absolute top-0 left-1/2 -translate-x-1/2'
+                                    } ${idx === currentIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+                            />
+                        ))}
+                    </motion.div>
+                ) : isVideo ? (
                     <video src={src} autoPlay loop muted playsInline className="w-full h-full object-cover" />
                 ) : (
                     <motion.img
