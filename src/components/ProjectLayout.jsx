@@ -180,34 +180,18 @@ export function ProjectTreeChart({ chip, title, rootNode, branches }) {
                         <div className="w-[140px] h-[48px] border-[1px] border-[#3E4C69] rounded-[24px] flex items-center justify-center bg-[#111622] text-[#6B89AC] text-[14px] font-medium tracking-wide">
                             {rootNode}
                         </div>
-                        {/* Connecting Line from Root to Branches (Desktop) */}
-                        <div className="hidden lg:block absolute right-[-100px] top-1/2 w-[100px] h-[1px] bg-[#3E4C69] -z-10"></div>
-                        {/* Connecting Line from Root to Branches (Mobile) */}
-                        <div className="block lg:hidden absolute bottom-[-48px] left-1/2 w-[1px] h-[48px] bg-[#3E4C69] -z-10"></div>
                     </div>
 
                     {/* Branches Container */}
                     <div className="flex flex-col gap-6 lg:gap-4 relative z-10 w-full lg:w-auto items-center lg:items-start">
-                        {/* Vertical Connecting Line (Spine - Desktop) */}
-                        <div className="hidden lg:block absolute left-[-50px] top-[24px] bottom-[24px] w-[1px] bg-[#3E4C69] -z-10"></div>
-
-                        {/* Vertical Connecting Line (Spine - Mobile) */}
-                        <div className="block lg:hidden absolute top-[0px] bottom-[0px] left-1/2 w-[1px] bg-[#3E4C69] -z-10"></div>
 
                         {branches.map((branch, idx) => (
-                            <div key={idx} className="flex flex-col lg:flex-row items-center lg:items-start gap-3 relative group w-full lg:w-auto">
-                                {/* Horizontal Line from Spine to Branch Parent (Desktop) */}
-                                <div className="hidden lg:block absolute left-[-50px] top-[20px] w-[50px] h-[1px] bg-[#3E4C69] -z-10 transition-colors"></div>
+                            <div key={idx} className="flex flex-col lg:flex-row items-center lg:items-start gap-3 relative group w-full lg:w-auto lg:pl-[50px]">
 
                                 {/* Branch Parent (Title) */}
                                 <div className="flex-shrink-0 w-[140px] h-[40px] border-[1px] border-[#3E4C69] flex items-center justify-center bg-[#111622] text-[#6B89AC] text-[13px] font-medium transition-colors cursor-default relative z-10">
                                     {branch.title}
                                 </div>
-
-                                {/* Line from Parent to Children (Mobile) */}
-                                {branch.children && branch.children.length > 0 && (
-                                    <div className="block lg:hidden w-[1px] h-[12px] bg-[#3E4C69] -z-10 flex-shrink-0"></div>
-                                )}
 
                                 {/* Sub Nodes Row */}
                                 {branch.children && branch.children.length > 0 && (
