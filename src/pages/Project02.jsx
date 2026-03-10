@@ -1,4 +1,4 @@
-import { ProjectLayout, ProjectHeroExact, ProjectGrid, ProjectSplit, ProjectFullMedia, ProjectHighlight, ProjectFullMediaWithTitle } from '../components/ProjectLayout';
+import { ProjectLayout, ProjectHeroExact, ProjectGrid, ProjectSplit, ProjectFullMedia, ProjectHighlight, ProjectFullMediaWithTitle, ProjectSectionText } from '../components/ProjectLayout';
 
 import imgM01 from '../images/project2-m01.png';
 import imgFC from '../images/project2-fc.png';
@@ -64,6 +64,17 @@ function Project02() {
                 objectFit="object-cover"
                 centered={true}
                 parallax={false}
+            />
+            <ProjectSectionText
+                title="Challenge"
+                text={[
+                    "아마추어 골프 리그인 SAGL은 다양한 연령대의 사용자가 참여하는 서비스로, 복잡한 신청 절차와 단계별 안내 부족으로 인해 신규 사용자들의 중도 이탈률이 높은 과제를 안고 있었습니다.",
+                    "특히 대회 정보 조회부터 선수 등록, 그리고 최종 참가 신청까지 이어지는 사용자 경험이 파편화되어 있어, 모바일 환경에서의 직관적인 흐름 설계가 절실히 필요한 상황이었습니다.",
+                    "저희는 이러한 퍼널 전반의 문제점을 진단하고, 핵심 태스크를 최소화하여 사용자가 자신의 대회 진행 상황을 한눈에 파악하고 막힘없이 신청을 완료할 수 있는 통합 UI/UX 솔루션을 목표로 하였습니다."
+                ]}
+                bgColor="bg-white"
+                textColor="text-[#121212]"
+                descColor="text-[#6B6B75]"
             />
         </ProjectLayout>
     );

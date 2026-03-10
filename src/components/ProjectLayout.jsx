@@ -486,3 +486,42 @@ export function ProjectTwoColumnMedia({ chip, title, image, bgColor = "bg-white"
     );
 }
 
+// 14. Simple Text Section (Title + Paragraphs)
+export function ProjectSectionText({ title, text, bgColor = "bg-white", textColor = "text-[#121212]", descColor = "text-gray-600" }) {
+    return (
+        <section className={`w-full ${bgColor} py-24 md:py-32 px-6 md:px-12 lg:px-16 flex justify-center transition-colors duration-500`}>
+            <div className="w-full max-w-[1800px] grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
+                <motion.div 
+                    className="lg:col-span-4" 
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                >
+                    <h2 className={`text-[clamp(1.5rem,3vw,2.5rem)] font-medium tracking-[-0.04em] leading-[1.2] ${textColor}`}>
+                        {title}
+                    </h2>
+                </motion.div>
+                <motion.div 
+                    className="lg:col-span-8 flex flex-col gap-6"
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                >
+                    {Array.isArray(text) ? (
+                        text.map((p, i) => (
+                            <p key={i} className={`text-[15px] md:text-[17px] font-normal leading-[1.8] ${descColor} break-keep`}>
+                                {p}
+                            </p>
+                        ))
+                    ) : (
+                        <p className={`text-[15px] md:text-[17px] font-normal leading-[1.8] ${descColor} break-keep`}>
+                            {text}
+                        </p>
+                    )}
+                </motion.div>
+            </div>
+        </section>
+    );
+}
