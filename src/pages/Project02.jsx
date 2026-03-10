@@ -1,6 +1,8 @@
 import { ProjectLayout, ProjectHeroExact, ProjectGrid, ProjectSplit, ProjectFullMedia, ProjectHighlight, ProjectFullMediaWithTitle, ProjectSectionText } from '../components/ProjectLayout';
 
 import imgM01 from '../images/project2-m01.png';
+import imgM02 from '../images/project2-m02.png';
+import imgM03 from '../images/project2-m03.png';
 import imgFC from '../images/project2-fc.png';
 import imgFC2 from '../images/project2-fc2.png';
 
@@ -84,6 +86,21 @@ function Project02() {
                 bgColor="bg-[#09122A]"
                 textColor="text-white"
                 descColor="text-[#9A9BA5]"
+            />
+            <ProjectGrid
+                images={[
+                    imgM03,
+                    imgM02
+                ]}
+                fits={[
+                    'object-cover',
+                    'object-cover'
+                ]}
+                aspect="aspect-square"
+                rounded="rounded-[40px]"
+                bgColor="bg-[#09122A]"
+                gap="gap-0"
+                itemBg="bg-[#030303]"
             />
         </ProjectLayout>
     );
