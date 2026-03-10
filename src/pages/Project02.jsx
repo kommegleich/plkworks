@@ -41,15 +41,6 @@ function Project02() {
                 subtitleColor="text-white/60"
                 labelColor="text-white/40"
             />
-            <ProjectFullMediaWithTitle
-                label="FLOWCHART"
-                src={imgFC2}
-                bgColor="bg-[#181C2B]"
-                textColor="text-white"
-                objectFit="object-cover"
-                centered={true}
-                parallax={false}
-            />
             <ProjectGrid
                 images={[
                     imgM01,
@@ -64,6 +55,15 @@ function Project02() {
                 bgColor="bg-[#09122A]"
                 gap="gap-0"
                 itemBg="bg-[#030303]"
+            />
+            <ProjectFullMediaWithTitle
+                label="FLOWCHART"
+                src={imgFC2}
+                bgColor="bg-[#181C2B]"
+                textColor="text-white"
+                objectFit="object-cover"
+                centered={true}
+                parallax={false}
             />
         </ProjectLayout>
     );
