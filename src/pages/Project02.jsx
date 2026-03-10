@@ -66,15 +66,24 @@ function Project02() {
                 parallax={false}
             />
             <ProjectSectionText
-                title="Challenge"
+                title="간편한 선수등록 프로세스 UX"
                 text={[
-                    "아마추어 골프 리그인 SAGL은 다양한 연령대의 사용자가 참여하는 서비스로, 복잡한 신청 절차와 단계별 안내 부족으로 인해 신규 사용자들의 중도 이탈률이 높은 과제를 안고 있었습니다.",
-                    "특히 대회 정보 조회부터 선수 등록, 그리고 최종 참가 신청까지 이어지는 사용자 경험이 파편화되어 있어, 모바일 환경에서의 직관적인 흐름 설계가 절실히 필요한 상황이었습니다.",
-                    "저희는 이러한 퍼널 전반의 문제점을 진단하고, 핵심 태스크를 최소화하여 사용자가 자신의 대회 진행 상황을 한눈에 파악하고 막힘없이 신청을 완료할 수 있는 통합 UI/UX 솔루션을 목표로 하였습니다."
+                    <span>
+                        <strong className="block text-white mb-2">진입 장벽 분석</strong>
+                        인증 절차를 포함한 기존의 복잡하고 까다로운 신청 단계가 아마추어 골퍼들의 중도 이탈과 저조한 대회 참여율의 핵심 원인임을 파악했습니다.
+                    </span>,
+                    <span>
+                        <strong className="block text-white mb-2">프로세스 개선</strong>
+                        '대회 신청도 예약처럼 쉽게'라는 컨셉 하에, 불필요한 군더더기 단계를 과감히 삭제하고 익숙한 골프장 예약 시스템의 UX 패턴을 적용하여 사용성을 극대화했습니다.
+                    </span>,
+                    <span>
+                        <strong className="block text-white mb-2">참여 유도 및 성과</strong>
+                        인증 과정을 사용자 흐름에 맞게 재배치하고 허들을 낮추는 전략적 UX 설계를 통해, 사용자의 심리적 부담을 줄이고 실질적인 대회 참가율 상승을 견인했습니다.
+                    </span>
                 ]}
-                bgColor="bg-white"
-                textColor="text-[#121212]"
-                descColor="text-[#6B6B75]"
+                bgColor="bg-[#09122A]"
+                textColor="text-white"
+                descColor="text-[#9A9BA5]"
             />
         </ProjectLayout>
     );
