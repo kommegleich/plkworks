@@ -606,7 +606,7 @@ export function ProjectThreeColTextBlocks({ label, columns, bgColor = "bg-transp
             <div className="w-full max-w-[1600px] flex flex-col items-center">
                 {label && (
                     <motion.p
-                        className={`text-[13px] md:text-[14px] font-bold mb-16 md:mb-24 ${labelColor}`}
+                        className={`text-[13px] md:text-[14px] font-bold mb-6 ${labelColor}`}
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
