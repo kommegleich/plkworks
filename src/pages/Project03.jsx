@@ -209,18 +209,21 @@ function Project03() {
 
                     {/* Right Column: Cross-fading Images */}
                     <div className="w-full h-auto aspect-square md:aspect-[4/5] rounded-[40px] md:rounded-[80px] overflow-hidden relative bg-[#111]">
-                        <img
-                            src={imgM08}
-                            alt="Data Driven 골프 경험 1"
-                            className="absolute inset-0 w-full h-full object-cover"
-                        />
-                        <motion.img
-                            src={imgM09}
-                            alt="Data Driven 골프 경험 2"
-                            className="absolute inset-0 w-full h-full object-cover"
+                        <motion.div
+                            className="absolute inset-0 w-full h-full bg-[#111]"
+                            animate={{ opacity: [1, 0, 1] }}
+                            transition={{ duration: 4, ease: "easeInOut", repeat: Infinity, repeatDelay: 1 }}
+                        >
+                            <img src={imgM08} alt="Data Driven 골프 경험 1" className="w-full h-full object-cover" />
+                        </motion.div>
+
+                        <motion.div
+                            className="absolute inset-0 w-full h-full bg-[#111]"
                             animate={{ opacity: [0, 1, 0] }}
                             transition={{ duration: 4, ease: "easeInOut", repeat: Infinity, repeatDelay: 1 }}
-                        />
+                        >
+                            <img src={imgM09} alt="Data Driven 골프 경험 2" className="w-full h-full object-cover" />
+                        </motion.div>
                     </div>
                 </div>
             </section>
