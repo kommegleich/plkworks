@@ -641,11 +641,12 @@ export function ProjectThreeColTextBlocks({ label, columns, bgColor = "bg-transp
 }
 
 // 18. Phone with Background Keyword Marquee
-export function ProjectPhoneWithMarquee({ phoneImage, title, keywordsRow1, keywordsRow2, bgColor = "bg-[#010101]" }) {
+export function ProjectPhoneWithMarquee({ phoneImage, title, keywordsRow1, keywordsRow2, keywordsRow3, bgColor = "bg-[#010101]" }) {
     // Generate a repeating array for seamless marquee
     const REPEAT_COUNT = 8;
     const row1Repeated = Array(REPEAT_COUNT).fill(keywordsRow1).flat();
     const row2Repeated = Array(REPEAT_COUNT).fill(keywordsRow2).flat();
+    const row3Repeated = keywordsRow3 ? Array(REPEAT_COUNT).fill(keywordsRow3).flat() : [];
 
     const MarqueeContent = ({ items }) => (
         <div className="flex gap-4 md:gap-6 px-2 md:px-3">
@@ -687,6 +688,20 @@ export function ProjectPhoneWithMarquee({ phoneImage, title, keywordsRow1, keywo
                         <MarqueeContent items={row2Repeated} />
                     </motion.div>
                 </div>
+
+                {/* Marquee Row 3 (Right to Left) */}
+                {keywordsRow3 && (
+                    <div className="flex overflow-hidden w-full">
+                        <motion.div
+                            className="flex whitespace-nowrap flex-shrink-0"
+                            animate={{ x: ["0%", "-50%"] }}
+                            transition={{ ease: "linear", duration: 62, repeat: Infinity }}
+                        >
+                            <MarqueeContent items={row3Repeated} />
+                            <MarqueeContent items={row3Repeated} />
+                        </motion.div>
+                    </div>
+                )}
             </div>
 
             {/* Content Area (Relative, Z-10) */}
