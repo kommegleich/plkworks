@@ -10,12 +10,18 @@ import {
     ProjectCenteredIntro,
     ProjectCenteredHighlightBlock,
     ProjectThreeColTextBlocks,
-    ProjectPhoneWithMarquee
+    ProjectPhoneWithMarquee,
+    ProjectTwoColHighlightAndPhones
 } from '../components/ProjectLayout';
 
 import imgHero from '../images/project3_backef.png';
 import imgM01 from '../images/project3-m01.webp';
 import imgM02 from '../images/project3-m02.webp';
+import imgM03 from '../images/project3-m03.webp'; // Left main phone
+import imgM04 from '../images/project3-m04.webp'; // Left sub badge 1
+import imgM05 from '../images/project3-m05.webp'; // Left sub badge 2
+import imgM06 from '../images/project3-m06.webp'; // Right main phone 
+import imgM07 from '../images/project3-m07.webp'; // Right sub banner
 
 function Project03() {
     return (
@@ -111,7 +117,30 @@ function Project03() {
                 bgColor="bg-[#010101]"
             />
 
-            {/* 07 - 화면 전체 너비로 배색된 큰 텍스트 강조(Highlight) 영역 */}
+            {/* 07 - 투 칼럼 하이라이트 & 폰 그리드 영역 */}
+            <ProjectTwoColHighlightAndPhones
+                topTitleLeft="스코어를 해석하다"
+                topTitleRight="스코어를 기록하다"
+                badgeLeft={["나의 골프스토리", "그 시절 그 라운드"]}
+                badgeRight={["나의 골프스토리", "그 시절 그 라운드"]}
+                subtitleLeft="데이터 기반 성과 해석 중심 설계"
+                subtitleRight="감정 회상을 위한 감성 중심 설계"
+                descLeft={[
+                    "반복된 플레이 데이터를 기반으로 성향 분석과 성과 인식을\n가능하게 하는 분석형 서비스로 설계",
+                    "스코어를 개인화된 인사이트로 전환해\n사용자 성장 흐름을 시각화"
+                ]}
+                descRight={[
+                    "플레이 당시의 시간, 장소, 동반자를 중심으로\n감정적 기억을 구조화한 경험 기록형 서비스",
+                    "정서적 몰입과 회상을 위한 타임라인 기반 UI로 설계"
+                ]}
+                imageLeft={imgM03}
+                imageRight={imgM06}
+                subImagesLeft={[imgM04, imgM05]}
+                subImagesRight={[imgM07]}
+                bgColor="bg-black"
+            />
+
+            {/* 08 - 화면 전체 너비로 배색된 큰 텍스트 강조(Highlight) 영역 */}
             <ProjectHighlight text="Data driven golf experience." bgColor="bg-[#010101]" textColor="text-white" />
         </ProjectLayout>
     );

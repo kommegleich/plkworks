@@ -706,3 +706,89 @@ export function ProjectPhoneWithMarquee({ phoneImage, title, keywords, bgColor =
     );
 }
 
+// 19. Two Column Highlight and Phone Grid (Project 03 Specific Layout)
+export function ProjectTwoColHighlightAndPhones({
+    topTitleLeft, topTitleRight,
+    badgeLeft, badgeRight,
+    subtitleLeft, subtitleRight,
+    descLeft, descRight,
+    imageLeft, imageRight,
+    subImagesLeft = [], subImagesRight = [],
+    bgColor = "bg-[#010101]"
+}) {
+    return (
+        <section className={`w-full py-24 md:py-32 flex justify-center ${bgColor}`}>
+            <div className="w-full max-w-[1400px] px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 relative z-10">
+                {/* Left Column */}
+                <motion.div
+                    className="flex flex-col items-center text-center"
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                >
+                    <h2 className="text-[#17C350] text-[clamp(2rem,4vw,3rem)] font-bold mb-8 tracking-tight break-keep">
+                        {topTitleLeft}
+                    </h2>
+
+                    <div className="flex gap-2 justify-center mb-16">
+                        <span className="px-5 py-2 rounded-full border border-[#333] bg-[#17C350] text-[#010101] text-sm font-semibold">{badgeLeft[0]}</span>
+                        <span className="px-5 py-2 rounded-full border border-[#17C350] text-[#17C350] text-sm font-medium">{badgeLeft[1]}</span>
+                    </div>
+
+                    <div className="w-[1px] h-24 bg-gradient-to-b from-[#17C350]/50 to-transparent mb-12"></div>
+
+                    <h4 className="text-[#17C350] text-sm font-bold tracking-widest mb-6">PERFORMANCE INSIGHT LAYER</h4>
+
+                    <h3 className="text-[#E0E0E0] text-[1.1rem] md:text-xl font-bold mb-4">{subtitleLeft}</h3>
+                    <p className="text-[#888888] text-[0.95rem] md:text-sm leading-relaxed mb-4 break-keep">{descLeft[0]}</p>
+                    <p className="text-[#888888] text-[0.95rem] md:text-sm leading-relaxed mb-16 break-keep">{descLeft[1]}</p>
+
+                    <div className="w-full max-w-[400px] flex flex-col gap-6 relative">
+                        <img src={imageLeft} alt="Performance Insight Phone" className="w-full h-auto object-contain drop-shadow-2xl" />
+                        <div className="absolute -bottom-8 md:-bottom-12 inset-x-0 px-4 md:px-8 flex justify-between gap-4">
+                            {subImagesLeft.map((img, i) => (
+                                <img key={i} src={img} alt={`Left detail ${i}`} className="w-1/2 object-contain" />
+                            ))}
+                        </div>
+                    </div>
+                </motion.div>
+
+                {/* Right Column */}
+                <motion.div
+                    className="flex flex-col items-center text-center md:mt-0 mt-20"
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                >
+                    <h2 className="text-[#FF2A85] text-[clamp(2rem,4vw,3rem)] font-bold mb-8 tracking-tight break-keep">
+                        {topTitleRight}
+                    </h2>
+
+                    <div className="flex gap-2 justify-center mb-16">
+                        <span className="px-5 py-2 rounded-full border border-[#333] text-[#888888] text-sm font-medium">{badgeRight[0]}</span>
+                        <span className="px-5 py-2 rounded-full border border-[#FF2A85] bg-[#FF2A85] text-white text-sm font-semibold">{badgeRight[1]}</span>
+                    </div>
+
+                    <div className="w-[1px] h-24 bg-gradient-to-b from-[#FF2A85]/50 to-transparent mb-12"></div>
+
+                    <h4 className="text-[#FF2A85] text-sm font-bold tracking-widest mb-6">EMOTIONAL MEMORY LAYER</h4>
+
+                    <h3 className="text-[#E0E0E0] text-[1.1rem] md:text-xl font-bold mb-4">{subtitleRight}</h3>
+                    <p className="text-[#888888] text-[0.95rem] md:text-sm leading-relaxed mb-4 break-keep">{descRight[0]}</p>
+                    <p className="text-[#888888] text-[0.95rem] md:text-sm leading-relaxed mb-16 break-keep">{descRight[1]}</p>
+
+                    <div className="w-full max-w-[400px] flex flex-col gap-6 relative">
+                        <img src={imageRight} alt="Emotional Memory Phone" className="w-full h-auto object-contain drop-shadow-2xl" />
+                        <div className="absolute -bottom-8 md:-bottom-12 px-6 w-full flex justify-center">
+                            {subImagesRight.length > 0 && (
+                                <img src={subImagesRight[0]} alt="Right detail" className="w-full object-contain" />
+                            )}
+                        </div>
+                    </div>
+                </motion.div>
+            </div>
+        </section>
+    );
+}
