@@ -29,7 +29,7 @@ function Project01() {
     return (
         <ProjectLayout
             nextProjectLink="/project/2"
-            nextProjectTitle="ARMATURE GOLF LEAGUE (SAGL)"
+            nextProjectTitle="ARMATURE GOLF LEAGUE"
             nextProjectBg="bg-gradient-to-r from-[#2D343A] to-[#09122A]"
             nextProjectDesc="스마트스코어 앱 내에서 누구나 손쉽게 대회에 참여할 수 있도록, \n복잡한 참가 신청의 진입 장벽을 낮추고 직관적인 흐름으로 개선한 아마추어 골프 리그 선수 등록 UX/UI 고도화 프로젝트"
         >
@@ -154,14 +154,14 @@ function Project01() {
             <ProjectPosterWithText
                 image={pos01}
                 chip="MULTIPLE DEVICES UXUI"
-                title={"다양한 디바이스와\n기능을 담은 UXUI"}
+                title={"다양한 디바이스와 \n기능을 담은 UXUI"}
                 subtitle={"직군 간의 업무 연결성을 최우선으로 고려하여\n파트 간 전환이 매끄러운 사용자 여정을 설계하는 데 집중했습니다."}
             />
 
             {/* 08 - 좌측에는 타이틀 텍스트, 우측에 꽉 차는 이미지로 구성된 2단 레이아웃 영역 */}
             <ProjectTwoColumnMedia
                 chip="erp app"
-                title={"내 손안의 컨트롤,\n웹과 앱의 연동으로 사용성 강화"}
+                title={"내 손안의 컨트롤, \n웹과 앱의 연동으로 사용성 강화"}
                 image={imgM02}
                 bgColor="bg-[#457FF3]"
             />

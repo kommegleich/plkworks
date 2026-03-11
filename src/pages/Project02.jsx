@@ -13,7 +13,7 @@ function Project02() {
             nextProjectTitle="스코어를 게이밍하다"
             nextProjectBg="bg-gradient-to-r from-[#00FF37] to-[#FF00FB]"
             nextProjectDesc="단순한 점수 기록을 넘어 방대한 스코어 데이터를 기반으로 유저의 플레이 패턴을 분석하고 감성적인 스토리로 풀어낸, \n스마트스코어 프리미엄 멤버십 전용 초개인화 리포트 서비스"
-            bgColor="bg-[#09122A]"
+            bgColor="bg-gradient-to-b from-[#10182B] to-[#030303]"
             textColor="text-white"
         >
             {/* 01 - 메인 제목과 오버뷰, 성과 지표(RESULTS) 내용이 적혀있음 */}
@@ -58,7 +58,7 @@ function Project02() {
                 ]}
                 aspect="aspect-square"
                 rounded="rounded-[40px]"
-                bgColor="bg-[#09122A]"
+                bgColor="bg-transparent"
                 gap="gap-0"
                 itemBg="bg-transparent"
             />
@@ -67,7 +67,7 @@ function Project02() {
             <ProjectFullMediaWithTitle
                 label="FLOWCHART"
                 src={imgFC2}
-                bgColor="bg-[#09122A]"
+                bgColor="bg-transparent"
                 textColor="text-white"
                 objectFit="object-cover"
                 centered={true}
@@ -91,7 +91,7 @@ function Project02() {
                         인증 과정을 사용자 흐름에 맞게 재배치하고 허들을 낮추는 전략적 UX 설계를 통해, 사용자의 심리적 부담을 줄이고 실질적인 대회 참가율 상승을 견인했습니다.
                     </span>
                 ]}
-                bgColor="bg-[#09122A]"
+                bgColor="bg-transparent"
                 textColor="text-white"
                 descColor="text-[#9A9BA5]"
             />
@@ -108,7 +108,7 @@ function Project02() {
                 ]}
                 aspect="aspect-square"
                 rounded="rounded-[40px]"
-                bgColor="bg-[#09122A]"
+                bgColor="bg-transparent"
                 gap="gap-0"
                 itemBg="bg-transparent"
             />
