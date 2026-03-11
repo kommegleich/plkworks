@@ -21,6 +21,9 @@ import imgM04 from '../images/project3-m04.webp';
 import imgM05 from '../images/project3-m05.webp';
 import imgM06 from '../images/project3-m06.webp';
 import imgM07 from '../images/project3-m07.webp';
+import imgM08 from '../images/project3-m08.webp';
+import imgM09 from '../images/project3-m09.webp';
+import vidProto from '../images/project3-proto.mov';
 
 function Project03() {
     return (
@@ -183,8 +186,44 @@ function Project03() {
                 </div>
             </section>
 
-            {/* 08 - 화면 전체 너비로 배색된 큰 텍스트 강조(Highlight) 영역 */}
-            <ProjectHighlight text="Data driven golf experience." bgColor="bg-[#010101]" textColor="text-white" />
+            {/* 08 - Data driven golf experience. 2단 분할 레이아웃 (비디오 & 이미지 크로스페이드) */}
+            <section className="w-full relative z-20 flex flex-col items-center px-6 md:px-12 lg:px-16 py-24 mx-auto max-w-[1600px] bg-[#010101]">
+                <div className="w-full text-center md:text-left mb-12 md:mb-16">
+                    <h2 className="text-[#E0E0E0] text-[clamp(2.5rem,5vw,5rem)] leading-tight font-bold tracking-tight">
+                        Data driven golf experience.
+                    </h2>
+                </div>
+
+                <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+                    {/* Left Column: Full Screen Video */}
+                    <div className="w-full h-auto aspect-square md:aspect-[4/5] rounded-[40px] md:rounded-[80px] overflow-hidden relative bg-[#111]">
+                        <video
+                            src={vidProto}
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                            className="absolute inset-0 w-full h-full object-cover"
+                        />
+                    </div>
+
+                    {/* Right Column: Cross-fading Images */}
+                    <div className="w-full h-auto aspect-square md:aspect-[4/5] rounded-[40px] md:rounded-[80px] overflow-hidden relative bg-[#111]">
+                        <img
+                            src={imgM08}
+                            alt="Data Driven 골프 경험 1"
+                            className="absolute inset-0 w-full h-full object-cover"
+                        />
+                        <motion.img
+                            src={imgM09}
+                            alt="Data Driven 골프 경험 2"
+                            className="absolute inset-0 w-full h-full object-cover"
+                            animate={{ opacity: [0, 1, 0] }}
+                            transition={{ duration: 4, ease: "easeInOut", repeat: Infinity, repeatDelay: 1 }}
+                        />
+                    </div>
+                </div>
+            </section>
         </ProjectLayout>
     );
 }
