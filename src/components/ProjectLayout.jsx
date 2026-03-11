@@ -691,13 +691,13 @@ export function ProjectPhoneWithMarquee({ phoneImage, title, keywords, bgColor =
 
                 {/* Right: Text */}
                 <motion.div
-                    className="flex flex-col justify-center text-center md:text-left md:pl-8 lg:pl-16 -mt-32 md:-mt-56"
+                    className="flex flex-col justify-center text-center md:text-left md:pl-8 lg:pl-16 -mt-4 md:-mt-56"
                     initial={{ opacity: 0, x: 30 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
                 >
-                    <h2 className="text-[#E0E0E0] text-[clamp(1.5rem,2.5vw,2.2rem)] leading-[1.6] font-medium whitespace-pre-line">
+                    <h2 className="text-[#E0E0E0] text-[clamp(1.3rem,4vw,2.2rem)] md:text-[clamp(1.5rem,2.5vw,2.2rem)] leading-[1.4] md:leading-[1.6] font-medium whitespace-pre-line break-keep">
                         {title}
                     </h2>
                 </motion.div>
