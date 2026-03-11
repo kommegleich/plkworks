@@ -9,11 +9,13 @@ import {
     ProjectHighlight,
     ProjectCenteredIntro,
     ProjectCenteredHighlightBlock,
-    ProjectThreeColTextBlocks
+    ProjectThreeColTextBlocks,
+    ProjectPhoneWithMarquee
 } from '../components/ProjectLayout';
 
 import imgHero from '../images/project3_backef.png';
 import imgM01 from '../images/project3-m01.webp';
+import imgM02 from '../images/project3-m02.webp';
 
 function Project03() {
     return (
@@ -101,7 +103,16 @@ function Project03() {
                 ]}
             />
 
-            {/* 06 - 화면 전체 너비로 배색된 큰 텍스트 강조(Highlight) 영역 */}
+            {/* 06 - 폰 목업과 무한 스크롤 키워드 (Marquee) 영역 */}
+            <ProjectPhoneWithMarquee
+                phoneImage={imgM02}
+                title={"기존 데이터에서 가져 올 수 있는\n개인화 패턴 도출"}
+                keywordsRow1={["평균 타수", "동반자의 정보", "홀 별 스코어", "핸디캡", "베스트 라운드", "동반자와의 평균 비교", "홀별 퍼포먼스 비교", "각 홀의 파 정보"]}
+                keywordsRow2={["라운드 히스토리", "라운드별 타수 편차", "라운드별 스코어 변화 추이", "최악의 라운드", "홀 인원수", "코스별 성적 비교", "특정 파 유형"]}
+                bgColor="bg-[#010101]"
+            />
+
+            {/* 07 - 화면 전체 너비로 배색된 큰 텍스트 강조(Highlight) 영역 */}
             <ProjectHighlight text="Data driven golf experience." bgColor="bg-[#010101]" textColor="text-white" />
         </ProjectLayout>
     );

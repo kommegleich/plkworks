@@ -640,3 +640,83 @@ export function ProjectThreeColTextBlocks({ label, columns, bgColor = "bg-transp
     );
 }
 
+// 18. Phone with Background Keyword Marquee
+export function ProjectPhoneWithMarquee({ phoneImage, title, keywordsRow1, keywordsRow2, bgColor = "bg-[#010101]" }) {
+    // Generate a repeating array for seamless marquee
+    const REPEAT_COUNT = 8;
+    const row1Repeated = Array(REPEAT_COUNT).fill(keywordsRow1).flat();
+    const row2Repeated = Array(REPEAT_COUNT).fill(keywordsRow2).flat();
+
+    const MarqueeContent = ({ items }) => (
+        <div className="flex gap-4 md:gap-6 px-2 md:px-3">
+            {items.map((kw, i) => (
+                <div key={i} className="px-5 md:px-8 py-2 md:py-3 rounded-full bg-[#1A1A1A] text-[#888888] text-[14px] md:text-[16px] border border-[#333333] whitespace-nowrap font-medium flex-shrink-0">
+                    {kw}
+                </div>
+            ))}
+        </div>
+    );
+
+    return (
+        <section className={`w-full relative py-32 md:py-48 overflow-hidden flex justify-center items-center min-h-[60vh] md:min-h-[80vh] ${bgColor}`}>
+            {/* Background Marquee Area (Absolute) */}
+            <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex flex-col gap-6 md:gap-8 z-0 w-full pointer-events-none opacity-80">
+
+                {/* Marquee Row 1 (Right to Left) */}
+                <div className="flex overflow-hidden w-full">
+                    <motion.div
+                        className="flex whitespace-nowrap flex-shrink-0"
+                        animate={{ x: ["0%", "-50%"] }}
+                        transition={{ ease: "linear", duration: 60, repeat: Infinity }}
+                    >
+                        {/* Render twice for seamless loop - 50% translation shifts exactly one content block */}
+                        <MarqueeContent items={row1Repeated} />
+                        <MarqueeContent items={row1Repeated} />
+                    </motion.div>
+                </div>
+
+                {/* Marquee Row 2 (Left to Right) */}
+                <div className="flex overflow-hidden w-full justify-end">
+                    <motion.div
+                        className="flex whitespace-nowrap flex-shrink-0"
+                        animate={{ x: ["-50%", "0%"] }}
+                        transition={{ ease: "linear", duration: 65, repeat: Infinity }}
+                    >
+                        {/* Render twice for seamless loop */}
+                        <MarqueeContent items={row2Repeated} />
+                        <MarqueeContent items={row2Repeated} />
+                    </motion.div>
+                </div>
+            </div>
+
+            {/* Content Area (Relative, Z-10) */}
+            <div className="w-full max-w-[1400px] grid grid-cols-1 md:grid-cols-2 gap-12 items-center px-6 md:px-12 relative z-10">
+                {/* Left: Phone Image */}
+                <div className="flex justify-center md:justify-end relative">
+                    <motion.img
+                        src={phoneImage}
+                        className="w-full max-w-[280px] md:max-w-[360px] h-auto object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.8)]"
+                        initial={{ opacity: 0, y: 50 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
+                    />
+                </div>
+
+                {/* Right: Text */}
+                <motion.div
+                    className="flex flex-col justify-center text-center md:text-left md:pl-8 lg:pl-16"
+                    initial={{ opacity: 0, x: 30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+                >
+                    <h2 className="text-[#E0E0E0] text-[clamp(1.5rem,2.5vw,2.2rem)] leading-[1.6] font-medium whitespace-pre-line">
+                        {title}
+                    </h2>
+                </motion.div>
+            </div>
+        </section>
+    );
+}
+
