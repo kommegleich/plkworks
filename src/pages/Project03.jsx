@@ -190,7 +190,7 @@ function Project03() {
             <section className="w-full relative z-20 flex flex-col items-center px-6 md:px-12 lg:px-16 py-24 mx-auto max-w-[1600px] bg-[#010101]">
                 <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
                     {/* Left Column: Full Screen Video */}
-                    <div className="w-full h-[50vh] md:col-span-2 rounded-[40px] md:rounded-[80px] overflow-hidden relative bg-[#111]">
+                    <div className="w-full h-[60vh] md:col-span-2 rounded-[40px] md:rounded-[80px] overflow-hidden relative bg-[#111]">
                         <video
                             src={vidProto}
                             autoPlay
@@ -202,7 +202,7 @@ function Project03() {
                     </div>
 
                     {/* Right Column: Cross-fading Images */}
-                    <div className="w-full h-[50vh] md:col-span-1 rounded-[40px] md:rounded-[80px] overflow-hidden relative bg-[#111]">
+                    <div className="w-full h-[60vh] md:col-span-1 rounded-[40px] md:rounded-[80px] overflow-hidden relative bg-[#111]">
                         <motion.div
                             className="absolute inset-0 w-full h-full bg-[#111]"
                             animate={{ opacity: [1, 0, 1] }}
