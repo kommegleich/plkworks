@@ -26,7 +26,7 @@ const fadeInUp = {
 };
 
 const fadeInSubtle = {
-    initial: { opacity: 0, y: 20 },
+    initial: { opacity: 0, y: 60 },
     whileInView: { opacity: 1, y: 0 },
     viewport: { once: true, margin: "-100px" },
     transition: { duration: 1.8, ease: [0.22, 1, 0.36, 1] }
@@ -123,11 +123,16 @@ function Project04() {
                         커뮤니티 활성화와 매출 전환을 동시에 촉진할 수 있는 전략적 접점으로 기획되었습니다.
                     </p>
 
-                    <img
-                        src={imgM03}
-                        alt="Project 4 Planning Flow"
-                        className="w-full max-w-[1000px] h-auto object-contain mt-8"
-                    />
+                    <motion.div 
+                        className="w-full max-w-[1000px] mt-8"
+                        {...fadeInSubtle}
+                    >
+                        <img
+                            src={imgM03}
+                            alt="Project 4 Planning Flow"
+                            className="w-full h-auto object-contain"
+                        />
+                    </motion.div>
                 </motion.div>
             </section>
 
