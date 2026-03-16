@@ -77,8 +77,8 @@ function Project03() {
                 labelColor="text-white/50"
             />
 
-            {/* 02 - Overlapping phones image area */}
-            <section className="w-full relative z-20 flex justify-center -mt-48 md:-mt-[35vh] px-6 md:px-12 lg:px-16 pb-24 mx-auto max-w-[2000px]">
+            {/* 02 - Overlapping phones image area - Adjusted negative margin for mobile to prevent overlap with title */}
+            <section className="w-full relative z-20 flex justify-center -mt-20 md:-mt-48 lg:-mt-[35vh] px-6 md:px-12 lg:px-16 pb-12 md:pb-24 mx-auto max-w-[2000px]">
                 <motion.img
                     src={imgM01}
                     alt="Phones mockups"
@@ -178,7 +178,7 @@ function Project03() {
                             <h3 className="text-[#E0E0E0] text-lg md:text-xl font-bold mb-6">
                                 데이터 기반 성과 해석 중심 설계
                             </h3>
-                            <p className="text-[#888888] text-[15px] md:text-base leading-[1.7] whitespace-pre-line mb-16 break-keep">
+                            <p className="text-[#888888] text-[15px] md:text-base leading-[1.7] whitespace-pre-line mb-10 md:mb-16 break-keep">
                                 {`반복된 플레이 데이터를 기반으로 성향 분석과 성과 인식을\n가능하게 하는 분석형 서비스로 설계\n\n스코어를 개인화된 인사이트로 전환해\n사용자 성장 흐름을 시각화`}
                             </p>
                         </div>
@@ -203,7 +203,7 @@ function Project03() {
                             <h3 className="text-[#E0E0E0] text-lg md:text-xl font-bold mb-6">
                                 감정 회상을 위한 감성 중심 설계
                             </h3>
-                            <p className="text-[#888888] text-[15px] md:text-base leading-[1.7] whitespace-pre-line mb-16 break-keep">
+                            <p className="text-[#888888] text-[15px] md:text-base leading-[1.7] whitespace-pre-line mb-10 md:mb-16 break-keep">
                                 {`플레이 당시의 시간, 장소, 동반자를 중심으로\n감정적 기억을 구조화한 경험 기록형 서비스\n\n정서적 몰입과 회상을 위한 타임라인 기반 UI로 설계`}
                             </p>
                         </div>
