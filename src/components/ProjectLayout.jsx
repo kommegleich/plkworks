@@ -186,7 +186,7 @@ export function ProjectTreeChart({ chip, title, subtitle, rootNode, branches }) 
     return (
         <section className="w-full py-16 md:py-24 px-4 md:px-8 lg:px-16 flex flex-col items-center bg-[#111622] overflow-hidden">
             {/* Header: Chip and Title */}
-            <div className="w-full max-w-[1400px] mb-12 md:mb-16 flex flex-col gap-6 items-center md:items-start select-none">
+            <div className="w-full max-w-[1400px] mb-10 md:mb-16 flex flex-col gap-6 items-center md:items-start select-none">
                 {chip && (
                     <div className="px-5 py-1.5 border border-white text-[#111622] text-[11px] md:text-sm font-bold uppercase tracking-widest bg-white rounded-[4px]">
                         {chip}
@@ -194,48 +194,82 @@ export function ProjectTreeChart({ chip, title, subtitle, rootNode, branches }) 
                 )}
                 <div className="flex flex-col gap-4">
                     {title && (
-                        <h2 className="text-[clamp(1.3rem,3vw,2.5rem)] font-medium text-white tracking-[-0.04em] text-center md:text-left">
+                        <h2 className="text-[clamp(1.3rem,3vw,2.5rem)] font-medium text-white tracking-[-0.04em] text-center md:text-left break-keep">
                             {title}
                         </h2>
                     )}
                     {subtitle && (
-                        <p className="text-[14px] md:text-base text-[#9A9BA5] font-normal leading-[1.7] text-center md:text-left opacity-90">
+                        <p className="text-[13px] md:text-base text-[#9A9BA5] font-normal leading-[1.7] text-center md:text-left opacity-90 break-keep">
                             {subtitle}
                         </p>
                     )}
                 </div>
             </div>
 
-            {/* Chart Container - horizontally scrollable on mobile */}
-            <div className="w-full max-w-[1400px] pb-8 overflow-x-auto">
-                <div className="min-w-[600px] flex flex-col lg:flex-row items-center lg:items-start justify-center lg:justify-start relative select-none">
+            {/* ── MOBILE LAYOUT (< lg): vertical card stack ── */}
+            <div className="w-full max-w-[1400px] flex flex-col gap-3 select-none lg:hidden">
 
-                    {/* Root Node (ERP) */}
-                    <div className="flex-shrink-0 flex items-center justify-center relative w-[140px] mb-12 lg:mb-0 lg:mr-[100px] z-10 lg:mt-[24px]">
+                {/* Root Node */}
+                <div className="flex items-center justify-center mb-2">
+                    <div className="px-6 h-[44px] border border-[#3E4C69] rounded-full flex items-center justify-center bg-[#111622] text-[#6B89AC] text-[13px] font-medium tracking-wide">
+                        {rootNode}
+                    </div>
+                </div>
+
+                {/* Branch Cards */}
+                {branches.map((branch, idx) => (
+                    <div key={idx} className="w-full rounded-[12px] border border-[#2A3550] bg-[#0D1320] overflow-hidden">
+                        {/* Branch Title Row */}
+                        <div className="px-4 py-3 border-b border-[#2A3550] flex items-center">
+                            <span className="text-white text-[13px] font-semibold tracking-wide">{branch.title}</span>
+                        </div>
+                        {/* Children Tags */}
+                        {branch.children && branch.children.length > 0 ? (
+                            <div className="px-4 py-3 flex flex-row flex-wrap gap-2">
+                                {branch.children.map((child, cIdx) => (
+                                    <span
+                                        key={cIdx}
+                                        className="px-3 h-[30px] inline-flex items-center border border-[#3E4C69] rounded-[6px] bg-[#111622] text-[#6B89AC] text-[11px] font-normal tracking-wide whitespace-nowrap"
+                                    >
+                                        {child}
+                                    </span>
+                                ))}
+                            </div>
+                        ) : (
+                            <div className="px-4 py-3">
+                                <span className="text-[#6B89AC] text-[11px]">—</span>
+                            </div>
+                        )}
+                    </div>
+                ))}
+            </div>
+
+            {/* ── DESKTOP LAYOUT (≥ lg): original horizontal tree ── */}
+            <div className="w-full max-w-[1400px] pb-8 hidden lg:block">
+                <div className="flex flex-row items-start justify-start relative select-none">
+
+                    {/* Root Node */}
+                    <div className="flex-shrink-0 flex items-center justify-center relative w-[140px] mr-[100px] z-10 mt-[24px]">
                         <div className="w-[140px] h-[48px] border-[1px] border-[#3E4C69] rounded-[24px] flex items-center justify-center bg-[#111622] text-[#6B89AC] text-[14px] font-medium tracking-wide">
                             {rootNode}
                         </div>
                     </div>
 
                     {/* Branches Container */}
-                    <div className="flex flex-col gap-6 lg:gap-4 relative z-10 w-full lg:w-auto items-center lg:items-start">
-
+                    <div className="flex flex-col gap-4 relative z-10 w-auto items-start">
                         {branches.map((branch, idx) => (
-                            <div key={idx} className="flex flex-col lg:flex-row items-center lg:items-start gap-3 relative group w-full lg:w-auto lg:pl-[50px]">
+                            <div key={idx} className="flex flex-row items-start gap-3 relative group w-auto pl-[50px]">
 
-                                {/* Branch Parent (Title) */}
-                                <div
-                                    className="flex-shrink-0 w-[140px] h-[40px] border-[1px] border-[#3E4C69] flex items-center justify-center bg-[#111622] text-white text-[13px] font-medium tracking-wide transition-all duration-300 cursor-default relative z-10 hover:z-20 group-hover:bg-[#457FF3] group-hover:border-[#457FF3] group-hover:scale-105 group-hover:shadow-[0_0_20px_rgba(69,127,243,0.3)] hover:!scale-110"
-                                >
+                                {/* Branch Parent */}
+                                <div className="flex-shrink-0 w-[140px] h-[40px] border-[1px] border-[#3E4C69] flex items-center justify-center bg-[#111622] text-white text-[13px] font-medium tracking-wide transition-all duration-300 cursor-default relative z-10 hover:z-20 group-hover:bg-[#457FF3] group-hover:border-[#457FF3] group-hover:scale-105 group-hover:shadow-[0_0_20px_rgba(69,127,243,0.3)] hover:!scale-110">
                                     {branch.title}
                                 </div>
 
-                                {/* Sub Nodes Row */}
+                                {/* Sub Nodes */}
                                 {branch.children && branch.children.length > 0 && (
-                                    <div className="flex flex-row flex-wrap justify-center lg:justify-start gap-2 lg:gap-3 w-full lg:w-auto px-4 lg:px-0 relative z-10">
+                                    <div className="flex flex-row flex-wrap justify-start gap-3 w-auto relative z-10">
                                         {branch.children.map((child, cIdx) => (
-                                            <div key={cIdx} className="flex-shrink-0 px-3 lg:w-[140px] h-[36px] lg:h-[40px] border-[1px] border-[#3E4C69] flex items-center justify-center bg-[#111622] text-[#6B89AC] text-[11px] lg:text-[12px] font-normal tracking-wide transition-all duration-300 cursor-default whitespace-nowrap lg:whitespace-normal text-center leading-tight hover:z-20 group-hover:border-[#457FF3]/40 group-hover:text-white/90 group-hover:bg-[#457FF3]/5 hover:!scale-110 hover:!bg-[#457FF3]/20 hover:!border-[#457FF3] hover:!text-white"
-                                            >
+                                            <div key={cIdx} className="flex-shrink-0 w-[140px] h-[40px] border-[1px] border-[#3E4C69] flex items-center justify-center bg-[#111622] text-[#6B89AC] text-[12px] font-normal tracking-wide transition-all duration-300 cursor-default text-center leading-tight hover:z-20 group-hover:border-[#457FF3]/40 group-hover:text-white/90 group-hover:bg-[#457FF3]/5 hover:!scale-110 hover:!bg-[#457FF3]/20 hover:!border-[#457FF3] hover:!text-white">
                                                 {child}
                                             </div>
                                         ))}
