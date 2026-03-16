@@ -725,7 +725,7 @@ export function ProjectPhoneWithMarquee({ phoneImage, title, keywords, bgColor =
 
                 {/* Right: Text */}
                 <motion.div
-                    className="flex flex-col justify-center text-center md:text-left md:pl-8 lg:pl-16 -mt-4 md:-mt-56"
+                    className="flex flex-col justify-center text-center md:text-left md:pl-8 lg:pl-16 mt-0 md:-mt-56"
                     initial={{ opacity: 0, x: 30 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
