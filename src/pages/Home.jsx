@@ -20,8 +20,10 @@ function Home() {
   const [isHovering, setIsHovering] = useState(false);
   const isMobile = useIsMobile();
 
-  // 모바일 전용 My Approach 클릭 상태 (null = 닫힘, 0/1/2 = 인덱스)
+  // 모바일: 클릭 토글 (0/1/2 = 인덱스, null = 닫힘)
   const [activeCard, setActiveCard] = useState(null);
+  // 데스크탑: JS hover 상태 (CSS group-hover: 완전 대체)
+  const [hoveredCard, setHoveredCard] = useState(null);
 
   const handleCardClick = (idx) => {
     if (isMobile) setActiveCard(prev => (prev === idx ? null : idx));
@@ -44,7 +46,7 @@ function Home() {
           onMouseEnter={() => !isMobile && setIsHovering(true)}
           onMouseLeave={() => !isMobile && setIsHovering(false)}
         >
-          {/* PLK — 크기 키움 (전체) */}
+          {/* PLK */}
           <motion.div
             className="text-[clamp(8rem,20vw,22rem)] font-black tracking-tighter cursor-default text-[#121212] mb-8 leading-none"
             initial={{ opacity: 0, y: 15 }}
@@ -142,13 +144,10 @@ function Home() {
               to={`/project/${index + 1}`}
               className={`group flex flex-col md:flex-row items-start md:items-center justify-between py-8 md:py-16 px-4 md:px-8 border-b border-gray-800 transition-all duration-500 overflow-hidden ${project.bgClass}`}
             >
-              {/* Default Title
-                  모바일: clamp(2.2rem,...) → 데스크탑: 원래 크기 clamp(1.8rem,6vw,5rem) */}
               <h3 className="text-[2.2rem] md:text-[clamp(1.8rem,6vw,5rem)] leading-[1.1] font-pretendard font-black tracking-tighter text-white break-words w-full md:w-5/12 mb-4 md:mb-0 group-hover:hidden transition-colors">
                 {project.title}
               </h3>
 
-              {/* Marquee Title */}
               <div className="hidden group-hover:flex overflow-hidden w-full md:w-5/12 mb-4 md:mb-0 mr-0 md:mr-8 items-center h-full">
                 <div className="flex w-max animate-custom-marquee">
                   <div className="flex shrink-0">
@@ -168,15 +167,11 @@ function Home() {
                 </div>
               </div>
 
-              {/* Subtitle & Chips */}
               <div className="w-full md:w-1/2 flex flex-row items-center justify-between mt-2 md:mt-0">
                 <div className="flex flex-col w-full">
-                  {/* desc: 모바일 text-base, 데스크탑 원래 크기 */}
                   <p className="text-gray-500 font-pretendard font-normal tracking-tight text-base md:text-sm lg:text-lg xl:text-xl break-keep whitespace-pre-line group-hover:text-white transition-colors line-clamp-3 md:line-clamp-none">
                     {project.desc}
                   </p>
-
-                  {/* Chips: 모바일 text-xs, 데스크탑 원래 크기 */}
                   {project.tags && project.tags.length > 0 && (
                     <div className="flex flex-wrap gap-1.5 mt-3 md:mt-0 md:max-h-0 md:opacity-0 md:overflow-hidden group-hover:mt-6 group-hover:max-h-24 group-hover:opacity-100 transition-all duration-500 ease-out">
                       {project.tags.map((tag, i) => (
@@ -221,9 +216,8 @@ function Home() {
           <div className="w-full px-4 md:px-8 mb-8 md:mb-16 xl:mb-24 flex justify-center">
             <h2 className="text-[clamp(3rem,12vw,14rem)] font-black tracking-tighter leading-tight px-2 text-center">EXPERTISE.</h2>
           </div>
-
           <div className="w-full max-w-[1800px] mx-auto px-4 md:px-8 flex flex-col xl:flex-row items-center justify-center xl:items-start gap-10 md:gap-16 xl:gap-8 mt-2 md:mt-10 xl:mt-20">
-            {/* Figma Column */}
+            {/* Figma */}
             <div className="flex flex-col w-full max-w-xs md:max-w-sm items-center xl:items-start shrink-0">
               <div className="mb-4 md:mb-6 flex justify-center xl:justify-start w-full">
                 <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-gray-400 border border-gray-200 px-2 py-1 rounded">Design Tool</span>
@@ -246,8 +240,7 @@ function Home() {
                 </div>
               </div>
             </div>
-
-            {/* Adobe Column */}
+            {/* Adobe */}
             <div className="flex flex-col w-full max-w-xs md:max-w-sm items-center xl:items-start shrink-0">
               <div className="mb-4 md:mb-6 flex justify-center xl:justify-start w-full">
                 <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-gray-400 border border-gray-200 px-2 py-1 rounded">Creative Cloud</span>
@@ -266,8 +259,7 @@ function Home() {
                 </div>
               </div>
             </div>
-
-            {/* Development Column */}
+            {/* Dev */}
             <div className="flex flex-col w-full max-w-xs md:max-w-sm items-center xl:items-start shrink-0">
               <div className="mb-4 md:mb-6 flex justify-center xl:justify-start w-full">
                 <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-gray-400 border border-gray-200 px-2 py-1 rounded">Tech Stack</span>
@@ -295,15 +287,15 @@ function Home() {
         </div>
       </section>
 
-      {/* 04 - My Approach Section */}
+      {/* 04 - My Approach Section
+          · 데스크탑: onMouseEnter/Leave → hoveredCard state (CSS hover 없음)
+          · 모바일: onClick → activeCard state (hover 효과 완전 없음) */}
       <section id="approach" className="w-full bg-[#0d0d0d] pt-16 md:pt-32 pb-24 md:pb-48 text-white relative">
         <div className="w-full px-4 md:px-8 mb-12 md:mb-24 flex flex-col items-center">
           <div className="mb-8 md:mb-12">
             <span className="text-[16px] md:text-[30px] font-normal text-gray-400 border border-gray-700 px-5 py-2.5 md:px-10 md:py-5 rounded-[4rem] backdrop-blur-sm tracking-[-0.05em]">about</span>
           </div>
-          <h2 className="text-[clamp(2.5rem,10vw,14rem)] font-black tracking-tighter leading-tight px-2 text-center uppercase">
-            MY APPROACH.
-          </h2>
+          <h2 className="text-[clamp(2.5rem,10vw,14rem)] font-black tracking-tighter leading-tight px-2 text-center uppercase">MY APPROACH.</h2>
         </div>
 
         <div className="w-full max-w-[1800px] mx-auto px-4 md:px-8">
@@ -311,44 +303,32 @@ function Home() {
 
             {/* ─── Card 1: INTUITION (white) ─── */}
             {(() => {
-              const isActive = isMobile && activeCard === 0;
+              const isActive = isMobile ? activeCard === 0 : hoveredCard === 0;
               return (
                 <div
-                  className="group relative w-full aspect-[4/5] sm:aspect-[3.5/5] bg-[#ffffff] rounded-[2rem] md:rounded-[2.5rem] overflow-hidden cursor-pointer md:hover:scale-[1.15] md:hover:z-50 transition-transform duration-300 ease-out shadow-2xl"
+                  className={`relative w-full aspect-[4/5] sm:aspect-[3.5/5] bg-[#ffffff] rounded-[2rem] md:rounded-[2.5rem] overflow-hidden cursor-pointer transition-all duration-300 ease-out shadow-2xl ${!isMobile && isActive ? 'scale-[1.15] z-50' : ''}`}
+                  onMouseEnter={() => !isMobile && setHoveredCard(0)}
+                  onMouseLeave={() => !isMobile && setHoveredCard(null)}
                   onClick={() => handleCardClick(0)}
                 >
-                  {/* Layer 0 — 이미지: 데스크탑 group-hover, 모바일 클릭 */}
-                  <div className={`absolute inset-0 z-0 transition-opacity duration-500 ease-in-out ${
-                    isMobile ? (isActive ? 'opacity-100' : 'opacity-0') : 'opacity-0 group-hover:opacity-100'
-                  }`}>
+                  {/* Layer 0: 이미지 */}
+                  <div className={`absolute inset-0 z-0 transition-opacity duration-500 ease-in-out ${isActive ? 'opacity-100' : 'opacity-0'}`}>
                     <img src={`${import.meta.env.BASE_URL}assets/profile.jpg`} alt="pulip kim" className="w-full h-full object-cover scale-[1.02]" />
                     <div className="absolute inset-0 bg-black/20" />
                   </div>
-
-                  {/* Layer 1 — 기본 콘텐츠: 숫자 + 제목 + 설명 */}
-                  <div className="absolute inset-0 z-10 p-6 md:p-10 lg:p-12 flex flex-col transition-transform duration-300 ease-out group-hover:-translate-y-2">
-                    <span className={`flex-none text-2xl md:text-3xl lg:text-4xl font-light tracking-tight transition-colors duration-300 ${
-                      isActive ? 'text-white' : 'text-[#121212] group-hover:text-white'
-                    }`}>(01)</span>
-
+                  {/* Layer 1: 기본 콘텐츠 */}
+                  <div className={`absolute inset-0 z-10 p-6 md:p-10 lg:p-12 flex flex-col transition-transform duration-300 ease-out ${!isMobile && isActive ? '-translate-y-2' : ''}`}>
+                    <span className={`flex-none text-2xl md:text-3xl lg:text-4xl font-light tracking-tight transition-colors duration-300 ${isActive ? 'text-white' : 'text-[#121212]'}`}>(01)</span>
                     <div className="flex-1 flex items-center">
-                      <h3 className={`text-[clamp(2.5rem,6vw,4rem)] font-black tracking-tighter text-[#121212] uppercase leading-none transition-opacity duration-300 ${
-                        isActive ? 'opacity-0' : 'opacity-100 group-hover:opacity-0'
-                      }`}>INTUITION</h3>
+                      <h3 className={`text-[clamp(2.5rem,6vw,4rem)] font-black tracking-tighter text-[#121212] uppercase leading-none transition-opacity duration-300 ${isActive ? 'opacity-0' : 'opacity-100'}`}>INTUITION</h3>
                     </div>
-
-                    <div className={`flex-none flex flex-col gap-1 transition-opacity duration-300 ${
-                      isActive ? 'opacity-0' : 'opacity-100 group-hover:opacity-0'
-                    }`}>
+                    <div className={`flex-none flex flex-col gap-1 transition-opacity duration-300 ${isActive ? 'opacity-0' : 'opacity-100'}`}>
                       <span className="text-lg md:text-2xl lg:text-3xl text-[#121212] font-normal tracking-tighter">직관</span>
                       <p className="text-lg md:text-2xl lg:text-3xl text-[#121212] font-normal tracking-tighter break-keep leading-snug">첫 진입부터 다음 행동이 보이는 구조</p>
                     </div>
                   </div>
-
-                  {/* Layer 2 — 열렸을 때 콘텐츠: 카드 전체 기준 absolute, 하단 정렬 */}
-                  <div className={`absolute inset-0 z-20 p-6 md:p-10 lg:p-12 flex flex-col justify-end transition-opacity duration-500 ${
-                    isMobile ? (isActive ? 'opacity-100' : 'opacity-0 pointer-events-none') : 'opacity-0 group-hover:opacity-100 delay-75'
-                  }`}>
+                  {/* Layer 2: reveal */}
+                  <div className={`absolute inset-0 z-20 p-6 md:p-10 lg:p-12 flex flex-col justify-end transition-opacity duration-500 ${isActive ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
                     <span className="font-normal tracking-tighter uppercase leading-tight text-[clamp(2rem,6vw,4rem)] text-white mb-1">PULIP KIM</span>
                     <p className="font-normal uppercase text-xs md:text-sm lg:text-base text-gray-300">ARBEITERINPILITA@GMAIL.COM</p>
                   </div>
@@ -358,41 +338,31 @@ function Home() {
 
             {/* ─── Card 2: FLOW (red) ─── */}
             {(() => {
-              const isActive = isMobile && activeCard === 1;
+              const isActive = isMobile ? activeCard === 1 : hoveredCard === 1;
               return (
                 <div
-                  className="group relative w-full aspect-[4/5] sm:aspect-[3.5/5] bg-[#d9331d] rounded-[2rem] md:rounded-[2.5rem] overflow-hidden cursor-pointer md:hover:scale-[1.15] md:hover:z-50 transition-transform duration-300 ease-out shadow-2xl"
+                  className={`relative w-full aspect-[4/5] sm:aspect-[3.5/5] bg-[#d9331d] rounded-[2rem] md:rounded-[2.5rem] overflow-hidden cursor-pointer transition-all duration-300 ease-out shadow-2xl ${!isMobile && isActive ? 'scale-[1.15] z-50' : ''}`}
+                  onMouseEnter={() => !isMobile && setHoveredCard(1)}
+                  onMouseLeave={() => !isMobile && setHoveredCard(null)}
                   onClick={() => handleCardClick(1)}
                 >
-                  <div className={`absolute inset-0 z-0 transition-opacity duration-500 ease-in-out ${
-                    isMobile ? (isActive ? 'opacity-100' : 'opacity-0') : 'opacity-0 group-hover:opacity-100'
-                  }`}>
+                  <div className={`absolute inset-0 z-0 transition-opacity duration-500 ease-in-out ${isActive ? 'opacity-100' : 'opacity-0'}`}>
                     <img src={`${import.meta.env.BASE_URL}assets/card2_hover_new.jpg`} alt="flow" className="w-full h-full object-cover scale-[1.02]" />
                     <div className="absolute inset-0 bg-black/20" />
                   </div>
-
-                  <div className="absolute inset-0 z-10 p-6 md:p-10 lg:p-12 flex flex-col transition-transform duration-300 ease-out group-hover:-translate-y-2">
-                    <span className="flex-none text-2xl md:text-3xl lg:text-4xl font-light tracking-tight text-white/90 group-hover:text-white transition-colors duration-300">(02)</span>
-
+                  <div className={`absolute inset-0 z-10 p-6 md:p-10 lg:p-12 flex flex-col transition-transform duration-300 ease-out ${!isMobile && isActive ? '-translate-y-2' : ''}`}>
+                    <span className="flex-none text-2xl md:text-3xl lg:text-4xl font-light tracking-tight text-white/90 transition-colors duration-300">(02)</span>
                     <div className="flex-1 flex items-center">
-                      <h3 className={`text-[clamp(2.5rem,6vw,4rem)] font-black tracking-tighter text-white uppercase leading-none transition-opacity duration-300 ${
-                        isActive ? 'opacity-0' : 'opacity-100 group-hover:opacity-0'
-                      }`}>FLOW</h3>
+                      <h3 className={`text-[clamp(2.5rem,6vw,4rem)] font-black tracking-tighter text-white uppercase leading-none transition-opacity duration-300 ${isActive ? 'opacity-0' : 'opacity-100'}`}>FLOW</h3>
                     </div>
-
-                    <div className={`flex-none flex flex-col gap-1 transition-opacity duration-300 ${
-                      isActive ? 'opacity-0' : 'opacity-100 group-hover:opacity-0'
-                    }`}>
+                    <div className={`flex-none flex flex-col gap-1 transition-opacity duration-300 ${isActive ? 'opacity-0' : 'opacity-100'}`}>
                       <span className="text-lg md:text-2xl lg:text-3xl text-white font-normal tracking-tighter">흐름</span>
                       <p className="text-lg md:text-2xl lg:text-3xl text-white font-normal tracking-tighter break-keep leading-snug">사용자의 목적과 제품의 구조가 일치하는 지점</p>
                     </div>
                   </div>
-
-                  <div className={`absolute inset-0 z-20 p-6 md:p-10 lg:p-12 flex flex-col justify-end transition-opacity duration-500 ${
-                    isMobile ? (isActive ? 'opacity-100' : 'opacity-0 pointer-events-none') : 'opacity-0 group-hover:opacity-100 delay-75'
-                  }`}>
-                    <a href="#projects" className="w-fit group/link">
-                      <span className="font-normal tracking-tighter text-white uppercase leading-tight text-[clamp(2rem,6vw,4rem)] group-hover/link:underline underline-offset-[8px] decoration-4">MORE WORKS</span>
+                  <div className={`absolute inset-0 z-20 p-6 md:p-10 lg:p-12 flex flex-col justify-end transition-opacity duration-500 ${isActive ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+                    <a href="#projects" className="w-fit">
+                      <span className="font-normal tracking-tighter text-white uppercase leading-tight text-[clamp(2rem,6vw,4rem)] hover:underline underline-offset-[8px] decoration-4">MORE WORKS</span>
                     </a>
                   </div>
                 </div>
@@ -401,44 +371,34 @@ function Home() {
 
             {/* ─── Card 3: CONTEXT (dark) ─── */}
             {(() => {
-              const isActive = isMobile && activeCard === 2;
+              const isActive = isMobile ? activeCard === 2 : hoveredCard === 2;
               return (
                 <div
-                  className="group relative w-full aspect-[4/5] sm:aspect-[3.5/5] bg-[#1b1b1b] rounded-[2rem] md:rounded-[2.5rem] overflow-hidden cursor-pointer md:hover:scale-[1.15] md:hover:z-50 transition-transform duration-300 ease-out shadow-2xl"
+                  className={`relative w-full aspect-[4/5] sm:aspect-[3.5/5] bg-[#1b1b1b] rounded-[2rem] md:rounded-[2.5rem] overflow-hidden cursor-pointer transition-all duration-300 ease-out shadow-2xl ${!isMobile && isActive ? 'scale-[1.15] z-50' : ''}`}
+                  onMouseEnter={() => !isMobile && setHoveredCard(2)}
+                  onMouseLeave={() => !isMobile && setHoveredCard(null)}
                   onClick={() => handleCardClick(2)}
                 >
-                  <div className={`absolute inset-0 z-0 transition-opacity duration-500 ease-in-out ${
-                    isMobile ? (isActive ? 'opacity-100' : 'opacity-0') : 'opacity-0 group-hover:opacity-100'
-                  }`}>
+                  <div className={`absolute inset-0 z-0 transition-opacity duration-500 ease-in-out ${isActive ? 'opacity-100' : 'opacity-0'}`}>
                     <img src={`${import.meta.env.BASE_URL}assets/card3_hover_new.jpg`} alt="context" className="w-full h-full object-cover scale-[1.02]" />
                     <div className="absolute inset-0 bg-black/20" />
                   </div>
-
-                  <div className="absolute inset-0 z-10 p-6 md:p-10 lg:p-12 flex flex-col transition-transform duration-300 ease-out group-hover:-translate-y-2">
-                    <span className="flex-none text-2xl md:text-3xl lg:text-4xl font-light tracking-tight text-white/80 group-hover:text-white transition-colors duration-300">(03)</span>
-
+                  <div className={`absolute inset-0 z-10 p-6 md:p-10 lg:p-12 flex flex-col transition-transform duration-300 ease-out ${!isMobile && isActive ? '-translate-y-2' : ''}`}>
+                    <span className="flex-none text-2xl md:text-3xl lg:text-4xl font-light tracking-tight text-white/80 transition-colors duration-300">(03)</span>
                     <div className="flex-1 flex items-center">
-                      <h3 className={`text-[clamp(2.5rem,6vw,4rem)] font-black tracking-tighter text-white uppercase leading-none transition-opacity duration-300 ${
-                        isActive ? 'opacity-0' : 'opacity-100 group-hover:opacity-0'
-                      }`}>CONTEXT</h3>
+                      <h3 className={`text-[clamp(2.5rem,6vw,4rem)] font-black tracking-tighter text-white uppercase leading-none transition-opacity duration-300 ${isActive ? 'opacity-0' : 'opacity-100'}`}>CONTEXT</h3>
                     </div>
-
-                    <div className={`flex-none flex flex-col gap-1 transition-opacity duration-300 ${
-                      isActive ? 'opacity-0' : 'opacity-100 group-hover:opacity-0'
-                    }`}>
+                    <div className={`flex-none flex flex-col gap-1 transition-opacity duration-300 ${isActive ? 'opacity-0' : 'opacity-100'}`}>
                       <span className="text-lg md:text-2xl lg:text-3xl text-white font-normal tracking-tighter">맥락</span>
                       <p className="text-lg md:text-2xl lg:text-3xl text-white font-normal tracking-tighter break-keep leading-snug">화면이 아닌 제품 전체의 구조를 먼저 읽는 것</p>
                     </div>
                   </div>
-
-                  <div className={`absolute inset-0 z-20 p-6 md:p-10 lg:p-12 flex flex-col justify-end gap-2 transition-opacity duration-500 ${
-                    isMobile ? (isActive ? 'opacity-100' : 'opacity-0 pointer-events-none') : 'opacity-0 group-hover:opacity-100 delay-75'
-                  }`}>
-                    <a href="mailto:arbeiterinpilita@gmail.com" className="w-fit group/link">
-                      <span className="font-normal tracking-tighter text-white uppercase leading-tight text-[clamp(2rem,6vw,4rem)] group-hover/link:underline underline-offset-[8px] decoration-4">GET IN TOUCH</span>
+                  <div className={`absolute inset-0 z-20 p-6 md:p-10 lg:p-12 flex flex-col justify-end gap-2 transition-opacity duration-500 ${isActive ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+                    <a href="mailto:arbeiterinpilita@gmail.com" className="w-fit">
+                      <span className="font-normal tracking-tighter text-white uppercase leading-tight text-[clamp(2rem,6vw,4rem)] hover:underline underline-offset-[8px] decoration-4">GET IN TOUCH</span>
                     </a>
-                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="w-fit group/link2">
-                      <span className="font-normal tracking-tighter text-white uppercase leading-tight text-[clamp(2rem,6vw,4rem)] group-hover/link2:underline underline-offset-[8px] decoration-4">LINKEDIN</span>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="w-fit">
+                      <span className="font-normal tracking-tighter text-white uppercase leading-tight text-[clamp(2rem,6vw,4rem)] hover:underline underline-offset-[8px] decoration-4">LINKEDIN</span>
                     </a>
                   </div>
                 </div>
